@@ -57,6 +57,50 @@
 4. 保管每个数据处理管道 => 3、5
 5. 统一开发/实际环境的语言/框架 => 6
 
+## 机器学习成果评价
+常见基础指标：
+- 准确率(Accuracy)
+- 查准率(Precision)
+- 召回率(Recall)
+- F值(F-measure)
+
+考虑上述指标的概念：
+- 混淆矩阵(Confusion Matrix)
+- 微平均(Micro-average)
+- 宏平均(Macro-average)
+
+其他指标：
+- ROC曲线
+- 基于ROC的AUG
+- ……
+
+更多相关内容欢迎参阅:watermelon:书
+
+![](http://latex.codecogs.com/gif.latex?F-measure=\frac{2}{\frac{1}{Precision}+\frac{1}{Recall}})
+
+![](http://latex.codecogs.com/gif.latex?Precision_{micro-average}=\frac{TP_{1}+TP_{2}+TP_{3}}{TP_{1}+TP_{2}+TP_{3}+FP_{1}+FP_{2}+FP_{3}})
+
+![](http://latex.codecogs.com/gif.latex?Precision_{macro-average}=\frac{Prec_{1}+Prec_{2}+Prec_{3}}{3})
+
+### 回归的评价
+均方根误差(![](http://latex.codecogs.com/gif.latex?RMSE))：
+![](http://latex.codecogs.com/gif.latex?RMSE=\sqrt{\frac{\sum_{i}(predict_{i}-actual_{i})^{2}}{N}})
+
+```python
+from math import sqrt
+
+def rmse(predicts, actuals):
+    sum = 0
+    for predict, actual in zip(predicts, actuals):
+        sum += (predict - actual)**2
+    return sqrt(sum / len(predicts))
+```
+
+现成的函数是：`sklearn.metrics.mean_squard_error`
+
+可决系数(![](http://latex.codecogs.com/gif.latex?R^{2}))
+![](http://latex.codecogs.com/gif.latex?R^{2}=1-\frac{\sum_{i}(predict_{i}-actual_{i})^{2}}{\sum_{i}(predict_{i}-\bar{actual_{i}})^{2}})
+
 ## 札记
 1. 损失函数L(x)和成本函数J(x)的区别：损失函数针对单个样本，成本函数针对整个数据集。
 2. 数据预处理占了整个数据分析业务的大半时间。
@@ -76,3 +120,5 @@
 16. 当模型经过了充分的模块化处理，就可以采用多个预测模型，组成多种互换组合，进行A/B测试(对照实验/随机实验)，更容易对多个模型进行性能预测。
 17. 最好是开发过程的源代码、模型、数据的变更都能得到版本管理，随时可以回溯，辅以文档就更好了。
 18. 随着开发的进行，参数可能不断增加，数据会变得越来越复杂，导致开发时和实际运行时的参数不一致，结果造成无法达到预想性能的事发生。
+19. 解决实际问题时，需要先考虑好是重视精确率还是重视召回率，一般最好是确定最低限度以后再进行调整。
+20. 执行数值计算时尽量不在Python系统进行处理是确保执行高速的重要措施。
