@@ -162,7 +162,7 @@ def rmse(predicts, actuals):
 感知机的损失函数是Hinge函数max(0, -twx)
 
 #### 逻辑回归
-逻辑回归表面是“回归”，其实是一个分类算法，它常被用作比较各种机器学习算法的基础算法。
+逻辑回归命名为“回归”，由于引入了回归函数，所以也可以作为分类算法，它常被用作比较各种机器学习算法的基础算法。
 
 逻辑回归与感知机相似，它的特点是：
 - 除了输出以外，还给出输出类别的概率值
@@ -274,6 +274,34 @@ KNN的核心问题（导致实际用的少）：
 
 随机森林、GBDT这种针对多个学习结果进行组合的方法称为集成学习。单纯的决策树随着数据的增加，其学习结果大为改变，而随机森林的学习结果较为稳定。此外，集成学习的预测性能也会更好一些……
 
+#### 贝叶斯(分类)算法
+贝叶斯算法是一类算法的总称，这类算法均以贝叶斯算法为基础，所以统称贝叶斯分类算法。
+
+贝叶斯定理我们也都知道，它是基于事件发生的条件概率而构建的一种判定方法。所以，贝叶斯分类算法就是一种以概率论为基础的分类算法。
+
+从分类问题的角度，贝叶斯算法足以与决策树算法和神经网络算法相媲美。基于贝叶斯算法的分类器以完善的贝叶斯定理为基础，有较强的模型表示、学习和推理能力，训练过程容易理解，且对于大型数据库也表现出不错的准确率与速度。它的不足之处是泛化能力比线性分类器（前面提到的逻辑回归和线性支持向量机等）差。
+
+贝叶斯分类器的代表有：
+- 朴素贝叶斯分类器
+- 贝叶斯网络分类器
+- 树扩展的朴素贝叶斯分类模型TAN分类器
+
+##### 朴素贝叶斯分类器
+朴素贝叶斯分类常被称为生成式分类器，它是基于概率特征来实现分类的；而逻辑回归常被称为判别式分类器，其中的概率只是一种分类的判别方式。
+
+朴素贝叶斯高效的原因是：它通过单独查看每个特征来学习参数，并从每个特征中手机简单的类别数据，并从每个特征中收集简单的类别统计数据。
+
+朴素贝叶斯模型对高维稀疏数据的效果很好，对参数的鲁棒性也相对较好。它是很好的基准模型，常用于非常大的数据集（在这些数据集上即使训练线性模型也需要花费大量时间）。
+
+scikit-learn实现了三种朴素贝叶斯分类器：
+- GaussianNB：可用于任意连续数据（主要用于高维数据），保存每个类别中每个特征的数学期望和标准差
+- BernoulliNB：假定输入数据为二分类数据，广泛用于稀疏数据，计算每个类别中每个特征不为0的元素个数
+- MultinomialNB：假定输入数据为计数数据（即每个特征代表某个对象的整体计数），广泛用于稀疏数据，统计每个类别中每个特征的数学期望
+
+
+MultinomialNB和BernoulliNB都只有一个参数alpha，它用于控制模型的复杂度。alpha的工作原理是，向算法中添加alpha这么多的虚拟数据点，这些点对所有的特征都取正值，这样可以将统计数据“平滑化”。<br/>
+alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的鲁棒性较好（alpha值对模型性能影响不大），但调整此参数可能使精度略有提高。
+
 ### 回归
 回归问题一共有以下几种典型的模型来处理：
 - 线性回归（直线）、多项式回归（曲线）
@@ -340,6 +368,101 @@ Lasso回归可能比Ridge回归更容易理解，毕竟只用了部分参数。
 
 最常用的分布式计算平台之一是Hadoop之上构建的Spark平台。
 
+## 重要的概率分布
+摘自 => [Here](https://github.com/graykode/distribution-is-all-you-need)
+
+![重要的概率分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/overview.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+### 均匀分布
+均匀分布在 [a，b] 上具有相同的概率值，是简单概率分布。
+
+![均匀分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/uniform.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 伯努利分布
+先验概率 p(x) 不考虑伯努利分布。因此，如果我们对最大似然进行优化，那么我们很容易被过度拟合。
+
+利用二元交叉熵对二项分类进行分类。它的形式与伯努利分布的负对数相同。
+
+![伯努利分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/bernoulli.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 二项分布
+参数为 n 和 p 的二项分布是一系列 n 个独立实验中成功次数的离散概率分布。<br/>
+二项式分布是指通过指定要提前挑选的数量而考虑先验概率的分布。
+
+![二项分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/binomial.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 多伯努利分布(分类分布)
+多伯努利称为分类分布。交叉熵和采取负对数的多伯努利分布具有相同的形式。
+
+![多伯努利分布(分类分布)](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/categorical.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 多项式分布
+多项式分布与分类分布的关系与伯努尔分布与二项分布的关系相同。
+
+![多项式分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/multinomial.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### β分布
+β分布与二项分布和伯努利分布共轭。
+
+利用共轭，利用已知的先验分布可以更容易地得到后验分布。
+
+当β分布满足特殊情况（α=1，β=1）时，均匀分布是相同的。
+
+![β分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/beta.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### Dirichlet分布
+dirichlet 分布与多项式分布是共轭的。
+
+如果 k=2，则为β分布。
+
+![Dirichlet分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/dirichlet.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### γ分布
+如果 gamma(a，1)/gamma(a，1)+gamma(b，1)与 beta(a，b) 相同，则 gamma 分布为β分布。
+
+指数分布和卡方分布是伽马分布的特例。
+
+![γ分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/gamma.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 指数分布
+指数分布是 α=1 时 γ 分布的特例。
+
+![指数分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/exponential.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 高斯分布
+高斯分布是一种非常常见的连续概率分布。
+
+![高斯分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/gaussian.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 正态分布(标准高斯分布)
+正态分布为标准高斯分布，数学期望为0，标准差为1。
+
+![正态分布(标准高斯分布)](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/normal.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### 卡方分布
+k 自由度的卡方分布是 k 个独立标准正态随机变量的平方和的分布。<br/>
+卡方分布是 β 分布的特例。
+
+![卡方分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/chi-squared.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+### t分布
+t分布是对称的钟形分布，与正态分布类似，但尾部较重，这意味着它更容易产生远低于平均值的值。
+
+![t分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/student_t.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
 ## 札记
 1. 损失函数L(x)和成本函数J(x)的区别：损失函数针对单个样本，成本函数针对整个数据集。
 2. 数据预处理占了整个数据分析业务的大半时间。
@@ -382,5 +505,23 @@ pip --no-cache-dir --default-timeout=1000 install xxx
 ```
 
 ## 荐读数目
-- 《Machine Learning at Work》（《机器学习应用系统设计》） 
+
+### 数学向
+- 《统计学习方法》
+
+### 半数学半理论向
+- 《机器学习》
+
+### 半理论半验证向（使用现成的库）
 - 《Introduction to Machine Learning with Python》（《Python机器学习基础教程》）
+- 《大话Python机器学习》
+
+### 半理论半实现向（自己造轮子）
+
+### 应用系统向
+- 《Machine Learning at Work》（《机器学习应用系统设计》） 
+
+### 工具库训练向
+- 《Python数据可视化之matplotlib实践》
+- 《Python数据可视化之matplotlib进阶》
+- 《Python数据可视化编程实战》
