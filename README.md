@@ -378,11 +378,14 @@ alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的�
 
 对于有多个特征的数据集而言，线性模型可以非常强大。特别地，如果特征数量大于训练数据点的数量，则任何目标y都可以在训练集上用线性函数完美拟合。
 
-简单线性回归模型：![](http://latex.codecogs.com/gif.latex?y={\alpha}+{\beta}x)
+简单线性回归模型：<br/>
+![](http://latex.codecogs.com/gif.latex?y={\alpha}+{\beta}x)
 
-残差平方和：![](http://latex.codecogs.com/gif.latex?SS_{res}=\sum\limits_{i=1}^{n}(y_{i}-f(x_{i}))^2)
+残差平方和：<br/>
+![](http://latex.codecogs.com/gif.latex?SS_{res}=\sum\limits_{i=1}^{n}(y_{i}-f(x_{i}))^2)
 
-方差计算：![](http://latex.codecogs.com/gif.latex?var(x)=\frac{\sum\limits_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1})
+方差计算：<br/>
+![](http://latex.codecogs.com/gif.latex?var(x)=\frac{\sum\limits_{i=1}^{n}(x_{i}-\bar{x})^2}{n-1})
 
 协方差计算：![](http://latex.codecogs.com/gif.latex?cov(x,y)=\frac{\sum_{i-1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{n-1})
 
@@ -443,7 +446,7 @@ Lasso回归可能比Ridge回归更容易理解，毕竟只用了部分参数。
 ## 降维
 降维指的是将高维数据在尽可能保留信息的情况下转换为低维数据。
 
-降维不仅有助于可视化，还可以将稀疏数据变为密级数据从而实现数据压缩。
+降维不仅有助于可视化，还可以将稀疏数据变为密集数据从而实现数据压缩。
 
 ## A/B测试
 简而言之，A/B测试就是：<br/>
