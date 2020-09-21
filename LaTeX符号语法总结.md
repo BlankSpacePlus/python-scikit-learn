@@ -17,6 +17,9 @@
 |   ![](http://latex.codecogs.com/gif.latex?\chi) **\chi**   |  ![](http://latex.codecogs.com/gif.latex?\omega) **\omega**  |  ![](http://latex.codecogs.com/gif.latex?\pi) **\pi**  |  ![](http://latex.codecogs.com/gif.latex?\psi) **\psi**  |  ![](http://latex.codecogs.com/gif.latex?\Xi) **\Xi**  |
 |   ![](http://latex.codecogs.com/gif.latex?\Gamma) **\Gamma**   |  ![](http://latex.codecogs.com/gif.latex?\Delta) **\Delta**  |  ![](http://latex.codecogs.com/gif.latex?\Lambda) **\Lambda**  |  ![](http://latex.codecogs.com/gif.latex?\Omega) **\Omega**  |  ![](http://latex.codecogs.com/gif.latex?\Phi) **\Phi**  |
 |   ![](http://latex.codecogs.com/gif.latex?\Psi) **\Psi**   |  ![](http://latex.codecogs.com/gif.latex?\Pi) **\Pi**  |  ![](http://latex.codecogs.com/gif.latex?\Sigma) **\Sigma**  |  ![](http://latex.codecogs.com/gif.latex?\Theta) **\Theta**  |  ![](http://latex.codecogs.com/gif.latex?\Upsilon) **\Upsilon**  |
+
+![希腊字母](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/tex/希腊字母.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
 ## 字母类符号
 |   ![](http://latex.codecogs.com/gif.latex?\aleph) **\aleph**   |  ![](http://latex.codecogs.com/gif.latex?\beth) **\beth**  |  ![](http://latex.codecogs.com/gif.latex?\daleth ) **\daleth**  |  ![](http://latex.codecogs.com/gif.latex?\gimel) **\gimel**  |  ![](http://latex.codecogs.com/gif.latex?\partial) **\partial**  |
 |:---:|:---:|:---:|:---:|:---:|

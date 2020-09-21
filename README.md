@@ -80,6 +80,12 @@
 - 数据创建众包
 - 集成于服务中，由用户输入
 
+## 机器学习数据集的划分
+监督学习中，数据集常被分为`训练集、测试集`或者`训练集、测试集、验证集`：
+- 训练集用于训练模型的子集，得到模型的未知参数。
+- 验证集用于评估训练集的效果，用于在训练过程中检验模型的状态、收敛情况。验证集通常用于调整超参数，根据几组模型上的表现决定哪组超参数拥有较好的性能。
+- 测试集用于测试训练后模型的子集，测试集用来评价模型的泛化能力，即之前模型使用验证集来确定了超参数，使用训练集调整了参数，最后使用一个从没有见过的数据集来判断这个模型的性能。
+
 ## 机器学习成果评价
 常见基础指标：
 - 准确率(Accuracy)
@@ -237,12 +243,62 @@ SVM的核函数举例：
 SVM使用核函数的缺点：容易对数据过拟合。此时避免过拟合的一个方法是引入松弛。
 
 #### 神经网络
-神经网络在很多方面都是接近完美的机器学习结构，它可以将输入数据映射到某种常规的输出。
+神经网络在很多方面都是接近完美的机器学习结构，它可以将输入数据映射到某种常规的输出，具备识别模式以及从以前的数据中学习的能力。
 
 学习神经网络之前，可以先学习一下感知机，二者有某些相似之处。但与感知机不同的是，神经网路可以用于模拟复杂的结构。
 
-神经网络具备识别模式以及从以前的数据中学习的能力。
+神经网络特别的一点在于它使用了一层隐藏的加权函数，称为神经元。在此隐藏层中，我们可以有效地构建一个使用了许多其他函数的网络。而如若没有隐藏层的这些函数，神经网络只是一组简单的加权函数罢了。
 
+神经网络可以使用每层神经元的数量表示。<br/>
+例如，输入层20个神经元，隐藏层10个神经元，输出层5个神经元，则可称之为20-10-5网络。
+
+输入层：神经网络的入口点，是模型设置的输入数据的地方，这一层无神经元，因为它的主要目的是作为隐藏层的导入渠道。<br/>
+神经网络的输入类型是一定要标记的，然而输入数据类型只有两种：
+- 对称型：标准输入的值的范围在0和1之间，如果输入数据比较稀疏，结果可能出现偏差(甚至有崩溃的风险)。
+- 标准型：对称输入的值的范围在-1和1之间，有利于防止模型因为清零效应而崩溃。它较少强调数据分布的中间位置，不确定数据可映射为0并被忽略掉。
+
+如果没有隐藏层，神经网络将是一些线性加权线性函数的组合；隐藏层的存在给神经网络赋予了为非线性数据建模的能力。实际的神经网络的隐藏层可能有N个。<br/>
+每个隐藏层包含一组神经元，这些神经元的输出将传递给输出层。
+
+神经元是封装在激励函数中的线性加权组合。加权线性组合是将从前面所有神经元得到的数据聚合成一个数据，用于作为下一层的输入。<br/>
+当神经网络一层一层输送信息时，它将前面一层的输入聚合为一个加权和。
+
+激励函数是在标准范围或对称范围之间规范化数据的方式。根据如何在训练算法中决定权重，我们需要选择不同的激励函数：
+
+| 名称 | 标准型输入 | 对称型输入 |
+|:---:|:---:|:---:|
+| Sigmoid | ![](http://latex.codecogs.com/gif.latex?\frac{1}{1+e^{-2\cdot{sum}}) | ![](http://latex.codecogs.com/gif.latex?{\frac{2}{1+e^{-2\cdot{sum}}}-1) |
+| Cosine | ![](http://latex.codecogs.com/gif.latex?{\frac{cos(sum)}{2}}+0.5) | ![](http://latex.codecogs.com/gif.latex?cos(sum)) |
+| Sine | ![](http://latex.codecogs.com/gif.latex?{\frac{sin(sum)}{2}}+0.5) | ![](http://latex.codecogs.com/gif.latex?sin(sum)) |
+| Gaussian | ![](http://latex.codecogs.com/gif.latex?\frac{1}{e^{sum^{2}}}) | ![](http://latex.codecogs.com/gif.latex?{\frac{2}{e^{sum^{2}}}}-1) |
+| Elliott | ![](http://latex.codecogs.com/gif.latex?{\frac{{0.5}\cdot{sum}}{1+\vert{sum}\vert}}+0.5) | ![](http://latex.codecogs.com/gif.latex?\frac{sum}{1+\vert{sum}\vert}) |
+| Linear | ![](http://latex.codecogs.com/gif.latex?sum>1?1:(sum<0:sum)) | ![](http://latex.codecogs.com/gif.latex?sum>1?1:(sum<-1?-1:sum)) |
+| Threshold | ![](http://latex.codecogs.com/gif.latex?sum<0?0:1) | ![](http://latex.codecogs.com/gif.latex?sum<0?-1:1) |
+
+其中Sigmoid是与神经元一起使用的默认函数，因为其有能力做平滑决策。
+
+使用激励函数的最大优点在于，它们可以作为缓存每层输入值的一种方式。这一点很有用处，因为神经网络可以借此寻找模式和忽略噪声。
+
+激励函数有两个主要类别：
+- 倾斜函数：很好的默认选择
+- 周期函数：用于给大量噪声的数据建模
+
+输出层具有神经元，这是模型给出数据的地方。与输入层一样，输出的数据也是对称型或标准型的。输出层有多少个输出，是正在建模的函数决定的。
+
+每个神经元的权重源自训练算法。训练算法通过迭代(epoch)，给每个神经元找到最优的权重值。<br/>
+每个epoch中，算法遍历整个神经网络，并将其与预期的结果进行比较。如果比较结果是错误的，算法将对神经元的权重值进行相应的调整。<br/>
+训练算法有很多种，比较典型的是：
+- 反向传播算法：![](http://latex.codecogs.com/gif.latex?\Delta{w(t)}=-\alpha{(t-y)}\phi'{x_{i}}+\epsilon\Delta{w(t-1)})
+- QuickProp算法：![](http://latex.codecogs.com/gif.latex?sum<0?0:1)
+- Rprop算法：![](http://latex.codecogs.com/gif.latex?sum<0?0:1)
+
+这些算法有一个共同点：它们试图找到一个凸误差表面的最优解，即梯度下降。
+
+迭代运算计算权重会比较快，这样做不试图计算关于权重的误差函数的导数，而是计算每个神经元权重的权重变化，此为delta规则：<br/>
+![](http://latex.codecogs.com/gif.latex?\Delta{w_{ji}}=\alpha{(t_{j}-\phi(h_{j}))\phi'(h_{j})}x_{i})<br/>
+这说明神经元j的第i个权重变化为：`alpha * (expected - calculated) * derivative_of_calculated * input_at_i`
+
+##### 前馈神经网络
 对于三层前馈神经网络，其按输入层、中间层、输出层的顺序对输入和权重进行乘积加权，用所谓softmax函数对输出层最后的计算值进行正规化处理，得到概率结果。<br/>
 前馈神经网络利用误差反向传播算法进行学习。根据随机初始化得到的权重值，沿着网络正向，计算输出值。再沿着网路反向，计算输出值与正确值的误差，从而修正权重值。如果权重值的修正量小于某个规定值，或者达到预设的循环次数，学习结束。
 
@@ -261,7 +317,6 @@ KNN的两个核心参数：
 - K值
 - 数据点之间距离的度量方法(距离的计量方法)
 
-
 K值的选择：
 - 猜测式选择
 - 启发式选择
@@ -274,6 +329,27 @@ K值的选择：
     - 网格搜索
     - ……
 
+距离的度量：
+- 几何距离(直观地测量一个物体上从一个点到另一个点有多远)
+    - 闵可夫斯基距离：![](http://latex.codecogs.com/gif.latex?d_{p}(x,y)=(\sum\limits_{i=0}^{n}|x_{i}-y_{i}|^{p})^{\frac{1}{p}})
+    - 欧几里得距离(p=2)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=0}^{n}(x_{i}-y_{i})^{2}})
+    - 余弦距离(计算稀疏矢量之间的距离的速度快)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\frac{x.y}{\Vert{x}\Vert\Vert{y}\Vert})
+- 计算距离
+    - 曼哈顿距离(适用于诸如图的遍历、离散优化之类的有边沿约束的问题)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=0}^{n}\vert{x_{i}-y_{i}}\vert)
+    - Levenshtein距离(工作原理类似于通过改变一个邻居来制作另一个邻居的精确副本，需要改变的步骤数就是Levenshtein距离，它用于自然语言处理)：![](http://latex.codecogs.com/gif.latex?\lambda\sum\limit_{i=1}^{m}{|w_{i}|})
+- 统计距离
+    - 马哈拉诺比斯(Mahalanobis)距离(取成对的数据点并测量平方差)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}{\frac{(x_{i}-y_{i})^{2}}{s_{i}^{2}}}})
+    - Jaccard距离(考虑到数据分类的重叠，可用于快速确定文本的相似程度)：![](http://latex.codecogs.com/gif.latex?J(X,Y)=\frac{\vert{X\cap{Y}}\vert}{\vert{X\cup{Y}}\vert})
+
+Levenshtein距离的Python代码表示(这是递归版的，实际应用需要改成DP版的)：
+```python
+def lev(a, b):
+    if not a:
+        return len(b)
+    if not b:
+        return len(a)
+    return min(lev(a[1:],b[1:])+(a[0]!=b[0]), lev(a[1:],b)+1, lev(a,b[1:])+1)
+```
 
 KNN的核心问题（导致实际用的少）：
 - 预测速度慢
@@ -299,7 +375,7 @@ KNN的核心问题（导致实际用的少）：
 
 决策树确实可以用树状图可视化表示，每个结点表示一个问题或一个包含答案的叶子结点。树的边将问题的答案与将问的下一个问题连接起来。
 
-为了构造决策树，不断地对数据进行递归划分，直到划分后的每个叶子结点只包含单一的目标值（叶子结点是纯的）。
+为了构造决策树，不断地对数据进行递归划分，直到划分后的每个叶子结点只包含单一的目标值（叶子结点是纯的），每一步的划分能够使得当前的信息增益达到最大。
 
 决策树节点分裂的三种常用指标：
 - 信息增益(Information gain)
@@ -309,21 +385,32 @@ KNN的核心问题（导致实际用的少）：
 信息增益的公式：<br/>
 ![](http://latex.codecogs.com/gif.latex?Gain=H_{new}-H_{prev}=H(T)-H(T|A))
 
-
 基尼不纯度的公式：<br/>
 ![](http://latex.codecogs.com/gif.latex?I_{G}(f)=\sum\limits_{i=1}^{m}p(f_{i})(1-p(f_{i}))=1-\sum\limits_{i=1}^{m}p(f_{i})^{2})
-
 
 方差缩减的公式：<br/>
 ![](http://latex.codecogs.com/gif.latex?\xi=E(X_{1j})-E(X_{2j})=\mu_{1}-\mu_{2})
 
+虽然划分的规则是根据数据给出的，但是划分本身其实是针对整个输入空间进行划分的。由于是NP完全问题，所以可以采取启发式方法来近似求解。
+
+决策树常见的生成算法：
+- ID3算法(交互式二分法)：比较朴素，使用互信息作为信息增益的度量，划分离散型数据，可以二分也可以多分。
+- C4.5算法：使用信息增益比作为信息增益的度量，给出了混合型数据分类的解决方案。
+- CART算法：规定生成出来的决策树为二叉树，且一般使用基尼增益作为信息增益的度量，可以做分类也可以做回归。
 
 决策树的算法结构：<br/>
 先根据训练数据确定条件式。在预测时，从树根依序追溯条件分支，直到叶子结点，然后返回预测结果。利用不纯度的基准，学习条件分支，尽量使相同类别的数据聚拢在一起。不纯度可以使用信息增益或者基尼系数（这些东西与信息论相关），数据的分割应该使得不纯度降低。利用决策树算法，应该能够得到从数据顺利分理出的IF-THEN规则树。
 
+决策树生成过程：
+1. 向根结点输入数据。
+2. 依据信息增益的度量，选择数据的某个特征来把数据划分成互不相交的好几份并分别喂给一个新的Node。
+3. 如果分完数据后发现：
+    1. 某份数据的不确定较小，亦即其中某一类别的样本已经占了大多数，此时就不再对这份数据继续进行划分，将对应的Node转化为叶结点。
+    2. 某份数据的不确定性仍然较大，那么这份数据就要继续分割下去。
+
 防止决策树过拟合的两种策略：
 1. 预剪枝：及早停止树的生长，限制条件可能包括限制树的最大深度、限制叶子节点的最大数目、规定一个结点中数据点的最小数目。
-2. (后)剪枝：先构造树，然后删除或折叠信息量很少的结点。
+2. (后)剪枝：先构造树，构造完后删除或折叠信息量很少的结点。
 
 Scikit-Learn的决策树实现是DecisionTreeRegressor和DecisionTreeClassifier，其中只实现了预剪枝而没有后剪枝。
 
@@ -639,6 +726,7 @@ pip --no-cache-dir --default-timeout=1000 install xxx
 - 《大话Python机器学习》
 
 ### 半理论半实现向（自己造轮子）
+- 《Python与机器学习实战-决策树、集成学习、支持向量机与神经网络算法详解及编程实现》
 
 ### 专题向
 - 《Bayesian Analysis with Python》（《Python贝叶斯分析》）
@@ -647,7 +735,8 @@ pip --no-cache-dir --default-timeout=1000 install xxx
 - 《Machine Learning at Work》（《机器学习应用系统设计》） 
 - 《Python人脸识别从入门到工程实践》
 - 《自然语言处理Python进阶》
-- 《机器学习 使用OpenCV和Python进行智能图像处理》
+- 《机器学习-使用OpenCV和Python进行智能图像处理》
+- 《Thoughtful Machine Learning with Python: A Test-Driven Approach》（《Python机器学习实践-测试驱动的开发方法》）
 
 ### 数据分析向
 - 《Foundations for Analysis with Python》（《Python数据分析基础》）
@@ -661,3 +750,22 @@ pip --no-cache-dir --default-timeout=1000 install xxx
 ### 深度学习
 - 《Deep Learning from Scratch》（《深度学习入门》）
 - 《零起点TensorFlow快速入门》
+
+## Scipy包的子模块
+| 模块名 | 功能 |
+|:---:|:---:|
+| scipy.cluster | 向量量化 |
+| scipy.constants | 数字常量 |
+| scipy.fftpack | 快速傅里叶变换 |
+| scipy.integrate | 积分 |
+| scipy.interpolate | 插值 |
+| scipy.io | 数据输入输出 |
+| scipy.linalg | 线性代数 |
+| scipy.ndimage | N维图像 |
+| scipy.odr | 正交距离回归 |
+| scipy.optimize | 优化算法 |
+| scipy.signal | 信号处理 |
+| scipy.sparse | 稀疏矩阵 |
+| scipy.spatial | 空间数据结构与算法 |
+| scipy.special | 特殊数学函数 |
+| scipy.stats | 统计函数 |
