@@ -252,7 +252,8 @@ SVM使用核函数的缺点：容易对数据过拟合。此时避免过拟合�
 神经网络可以使用每层神经元的数量表示。<br/>
 例如，输入层20个神经元，隐藏层10个神经元，输出层5个神经元，则可称之为20-10-5网络。
 
-输入层：神经网络的入口点，是模型设置的输入数据的地方，这一层无神经元，因为它的主要目的是作为隐藏层的导入渠道。<br/>
+输入层：神经网络的入口点，是模型设置的输入数据的地方，这一层无神经元，因为它的主要目的是作为隐藏层的导入渠道。
+
 神经网络的输入类型是一定要标记的，然而输入数据类型只有两种：
 - 对称型：标准输入的值的范围在0和1之间，如果输入数据比较稀疏，结果可能出现偏差(甚至有崩溃的风险)。
 - 标准型：对称输入的值的范围在-1和1之间，有利于防止模型因为清零效应而崩溃。它较少强调数据分布的中间位置，不确定数据可映射为0并被忽略掉。
@@ -289,14 +290,25 @@ SVM使用核函数的缺点：容易对数据过拟合。此时避免过拟合�
 每个epoch中，算法遍历整个神经网络，并将其与预期的结果进行比较。如果比较结果是错误的，算法将对神经元的权重值进行相应的调整。<br/>
 训练算法有很多种，比较典型的是：
 - 反向传播算法：![](http://latex.codecogs.com/gif.latex?\Delta{w(t)}=-\alpha{(t-y)}\phi'{x_{i}}+\epsilon\Delta{w(t-1)})
-- QuickProp算法：![](http://latex.codecogs.com/gif.latex?sum<0?0:1)
-- Rprop算法：![](http://latex.codecogs.com/gif.latex?sum<0?0:1)
+- QuickProp算法：![](http://latex.codecogs.com/gif.latex?\Delta{w(t)}=\frac{S(t)}{S(t-1)-S(t)}\Delta{w(t-1)})
+- Rprop算法：不根据公式计算权重变化，它仅使用权重改变量的符号，以及一个增加因子和减小因子。
 
 这些算法有一个共同点：它们试图找到一个凸误差表面的最优解，即梯度下降。
 
 迭代运算计算权重会比较快，这样做不试图计算关于权重的误差函数的导数，而是计算每个神经元权重的权重变化，此为delta规则：<br/>
 ![](http://latex.codecogs.com/gif.latex?\Delta{w_{ji}}=\alpha{(t_{j}-\phi(h_{j}))\phi'(h_{j})}x_{i})<br/>
 这说明神经元j的第i个权重变化为：`alpha * (expected - calculated) * derivative_of_calculated * input_at_i`
+
+构建神经网络之前，要思考到这样三个问题：
+- 使用多少隐藏层？隐藏层的数量没有明确的限制，有三种启发式方法可提供帮助：
+    - 不要使用两个以上的隐藏层，否则可能出现数据过拟合的情况。如果隐藏层数量太多，神经网路就会开始记忆训练数据。
+    - 通常来说，一个隐藏层的工作，近似于对数据做一个连续映射。大多数神经网络中都只有一个隐藏层而已。
+    - 两个隐藏层之间可能不做连续映射。这种情况比较罕见，如果不想做连续映射，可以使用两个隐藏层。
+- 每个隐藏层有多少神经元？由于强调的是应该聚合而非扩展，有三种启发式方法可提供帮助：
+    - 隐藏神经元的数量应该在输入神经元数量和输出神经元数量之间。
+    - 隐藏神经元的数量应该为输入神经元数量的三分之二，加上输出神经元的数量。
+    - 隐藏神经元的数量应该小于输入神经元的数量。
+- 神经网络的容错率和最大epoch是多少？
 
 ##### 前馈神经网络
 对于三层前馈神经网络，其按输入层、中间层、输出层的顺序对输入和权重进行乘积加权，用所谓softmax函数对输出层最后的计算值进行正规化处理，得到概率结果。<br/>
@@ -331,15 +343,15 @@ K值的选择：
 
 距离的度量：
 - 几何距离(直观地测量一个物体上从一个点到另一个点有多远)
-    - 闵可夫斯基距离：![](http://latex.codecogs.com/gif.latex?d_{p}(x,y)=(\sum\limits_{i=0}^{n}|x_{i}-y_{i}|^{p})^{\frac{1}{p}})
-    - 欧几里得距离(p=2)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=0}^{n}(x_{i}-y_{i})^{2}})
-    - 余弦距离(计算稀疏矢量之间的距离的速度快)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\frac{x.y}{\Vert{x}\Vert\Vert{y}\Vert})
+    - 闵可夫斯基距离：<br/>![](http://latex.codecogs.com/gif.latex?d_{p}(x,y)=(\sum\limits_{i=0}^{n}|x_{i}-y_{i}|^{p})^{\frac{1}{p}})
+    - 欧几里得距离(p=2)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=0}^{n}(x_{i}-y_{i})^{2}})
+    - 余弦距离(计算稀疏矢量之间的距离的速度快)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\frac{x.y}{\Vert{x}\Vert\Vert{y}\Vert})
 - 计算距离
-    - 曼哈顿距离(适用于诸如图的遍历、离散优化之类的有边沿约束的问题)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=0}^{n}\vert{x_{i}-y_{i}}\vert)
-    - Levenshtein距离(工作原理类似于通过改变一个邻居来制作另一个邻居的精确副本，需要改变的步骤数就是Levenshtein距离，它用于自然语言处理)：![](http://latex.codecogs.com/gif.latex?\lambda\sum\limit_{i=1}^{m}{|w_{i}|})
+    - 曼哈顿距离(适用于诸如图的遍历、离散优化之类的有边沿约束的问题)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=0}^{n}\vert{x_{i}-y_{i}}\vert)
+    - Levenshtein距离(工作原理类似于通过改变一个邻居来制作另一个邻居的精确副本，需要改变的步骤数就是Levenshtein距离，它用于自然语言处理)：<br/>![](http://latex.codecogs.com/gif.latex?\lambda\sum\limit_{i=1}^{m}{|w_{i}|})
 - 统计距离
-    - 马哈拉诺比斯(Mahalanobis)距离(取成对的数据点并测量平方差)：![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}{\frac{(x_{i}-y_{i})^{2}}{s_{i}^{2}}}})
-    - Jaccard距离(考虑到数据分类的重叠，可用于快速确定文本的相似程度)：![](http://latex.codecogs.com/gif.latex?J(X,Y)=\frac{\vert{X\cap{Y}}\vert}{\vert{X\cup{Y}}\vert})
+    - 马哈拉诺比斯(Mahalanobis)距离(取成对的数据点并测量平方差)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}{\frac{(x_{i}-y_{i})^{2}}{s_{i}^{2}}}})
+    - Jaccard距离(考虑到数据分类的重叠，可用于快速确定文本的相似程度)：<br/>![](http://latex.codecogs.com/gif.latex?J(X,Y)=\frac{\vert{X\cap{Y}}\vert}{\vert{X\cup{Y}}\vert})
 
 Levenshtein距离的Python代码表示(这是递归版的，实际应用需要改成DP版的)：
 ```python
