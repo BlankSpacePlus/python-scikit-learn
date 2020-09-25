@@ -235,11 +235,18 @@ def rmse(predicts, actuals):
 它的表达式是：<br/>
 ![](http://latex.codecogs.com/gif.latex?Sigmoid(x)=\frac{1}{1+e^{-x}})
 
-`目标函数 = 所有数据的损失函数总和 + 正则化项`
+所以逻辑回归拟合模型公式：<br/>
+![](http://latex.codecogs.com/gif.latex?y_{i}=Sigmoid(x_{i}\beta)=\frac{1}{1+e^{-x_{i}\beta}})
 
-- L1正则化项(用于Lasso回归)：![](/gif.latex?\lambda\sum\limit_{i=1}^{m}{w_{i}^{2}})
-- L2正则化项(用于Ridge回归)：![](http://latex.codecogs.com/gif.latex?\lambda\sum\limit_{i=1}^{m}{|w_{i}|})
-- ElasticNet回归混合了Lasso回归和Ridge回归
+线性回归通过最小化误差平方和的方式来拟合模型，最终选出令得到这些观测数据的最大的β。<br/>
+但逻辑回归这里可不是这样的，我们可以直接使用梯度下降法来最大化似然，也就是说我们要计算似然函数及其梯度。
+
+![](http://latex.codecogs.com/gif.latex?y_{i}=Sigmoid(x_{i}\beta)=\frac{1}{1+e^{-x_{i}\beta}})<br/>
+由上式知：已知β的情况下，我们的模型指出每个![](http://latex.codecogs.com/gif.latex?y_{i})等于1的概率为![](http://latex.codecogs.com/gif.latex?f(x_{i}\beta))，等于0的概率为![](http://latex.codecogs.com/gif.latex?1-f(x_{i}\beta))
+
+事实上，最大化对数似然函数会更简单一些：<br/>
+![](http://latex.codecogs.com/gif.latex?logL(\beta\vert{x_{i},y_{i}})={y_{i}}log{f(x_{i}\beta)}+{(1-y_{i})log(1-f(x_{i}\beta))})<br/>
+由于对数函数是单调递增的，所以任何能够最大化对数似然函数的β也必然能最大化似然函数，反之亦然。
 
 #### 多分类线性模型
 除了逻辑回归，绝大多数的线性分类模型只能适用于二分类问题，而不直接适用于多分类问题，推广的办法是“一对其余”。<br/>
@@ -658,16 +665,22 @@ L0范数：向量中非0元素的个数。
 
 回归模型怕遇到的情况之一是变量是自相关的，因为那样的话系数没有意义。
 
-这里可以关注一下无偏估计和有偏估计的概念。
+### 带正则化项的线性回归
 
-### Ridge回归
+`目标函数 = 所有数据的损失函数总和 + 正则化项`
+
+- L1正则化项(用于Lasso回归)：![](/gif.latex?\lambda\sum\limit_{i=1}^{m}{w_{i}^{2}})
+- L2正则化项(用于Ridge回归)：![](http://latex.codecogs.com/gif.latex?\lambda\sum\limit_{i=1}^{m}{|w_{i}|})
+- ElasticNet回归混合了Lasso回归和Ridge回归
+
+#### Ridge回归
 Ridge回归和Lasso回归是添加了正则化的线性回归，Ridge回归使用L2范数，Lasso回归使用L1范数。<br/>
 所谓正则化，指的是我们给误差项添加一个惩罚项，该惩罚项会随着β的增大而增大，能够抑制某个系数可能过大的影响(最终形成有偏估计)。<br/>
 我们试图使误差项和惩罚项的组合值最小化，得到所谓最优解。
 
 通过实测可以知道，随着模型可用的数据越来越多，两个模型的性能都在提升，最终线性回归的性能追上了岭回归。如果有足够多的训练数据，正则化变得不那么重要，线性回归和岭回归将具有相同的性能，但线性回归的训练性能在下降（如果添加更多数据，模型将更难以过拟合或记住所有数据）。
 
-### Lasso回归
+#### Lasso回归
 关于Lasso回归使用的L1范数，其实就是系数的绝对值之和，其结果是：使用Lasso时的某些系数刚好为0，这说明某些特征会被模型完全忽略。这个过程可以看做一个自动化的选择过程。
 
 对比一下Ridge回归和Lasso回归：
@@ -676,7 +689,7 @@ Ridge回归和Lasso回归是添加了正则化的线性回归，Ridge回归使�
 - 实际应用中选择Ridge回归的比Lasso回归的多，但Lasso回归适合处理稀疏模型。如果特征很多但只有几个是重要的，那选Lasso回归可能更好。
 - Lasso回归可能比Ridge回归更容易理解，毕竟只用了部分参数。
 
-### ElasticNet
+#### ElasticNet
 这个东西综合考虑了Lasso回归的L1和Ridge回归的L2，需要调节这两个正则化项的参数。
 
 ### 回归树
