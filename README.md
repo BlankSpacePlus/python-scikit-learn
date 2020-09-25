@@ -1,12 +1,12 @@
-# Scikit-Learn库使用练习
+# 机器学习与Scikit-Learn
 
 版本：`0.22.1`
 
 
-![Scikit-Learn](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/sklearn.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/sklearn.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 
-![Scikit-Learn-With-Python](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/sklearn-python.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/sklearn-python.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 
 > 说好的只研究Scikit-Learn，终究还是把这里变成了深入学习机器学习的笔记资料库。
@@ -303,6 +303,13 @@ SVM使用核函数的缺点是容易对数据过拟合，此时避免过拟合�
 
 学习神经网络之前，可以先学习一下感知机，二者有某些相似之处。但与感知机不同的是，神经网路可以用于模拟复杂的结构。
 
+M-P模型：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/神经网络-MP模型.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](http://latex.codecogs.com/gif.latex?y=\Phi(\sum\limits_{i=1}^n{w_{i}x_{i}+b}))<br/>
+参数值说明：
+- w能把从激活函数得到的函数值线性映射到另一个维度的空间上
+- b能在此基础上再进行一步平移的操作
+
 神经网络特别的一点在于它使用了一层隐藏的加权函数，称为神经元。在此隐藏层中，我们可以有效地构建一个使用了许多其他函数的网络。而如若没有隐藏层的这些函数，神经网络只是一组简单的加权函数罢了。
 
 神经网络可以使用每层神经元的数量表示。<br/>
@@ -317,10 +324,12 @@ SVM使用核函数的缺点是容易对数据过拟合，此时避免过拟合�
 如果没有隐藏层，神经网络将是一些线性加权线性函数的组合；隐藏层的存在给神经网络赋予了为非线性数据建模的能力。实际的神经网络的隐藏层可能有N个。<br/>
 每个隐藏层包含一组神经元，这些神经元的输出将传递给输出层。
 
-神经元是封装在激励函数中的线性加权组合。加权线性组合是将从前面所有神经元得到的数据聚合成一个数据，用于作为下一层的输入。<br/>
+神经元是封装在激活函数中的线性加权组合。加权线性组合是将从前面所有神经元得到的数据聚合成一个数据，用于作为下一层的输入。<br/>
 当神经网络一层一层输送信息时，它将前面一层的输入聚合为一个加权和。
 
-激励函数是在标准范围或对称范围之间规范化数据的方式。根据如何在训练算法中决定权重，我们需要选择不同的激励函数：
+神经网路的基本组成单元是层(Layer)而不是神经元节点，层![](http://latex.codecogs.com/gif.latex?L_{i})与层![](http://latex.codecogs.com/gif.latex?L_{i+1})之间通过权值矩阵![](http://latex.codecogs.com/gif.latex?w^{i})和偏置量![](http://latex.codecogs.com/gif.latex?b^{i})来连接。其中![](http://latex.codecogs.com/gif.latex?w^{i})能将结果从原来的维度空间映射到新的维度空间，![](http://latex.codecogs.com/gif.latex?b^{i})则能打破对称性。
+
+神经网络模型的每一层![](http://latex.codecogs.com/gif.latex?L_{i})都有一个激活函数![](http://latex.codecogs.com/gif.latex?\Phi_{i})，激活函数是在标准范围或对称范围之间规范化数据的方式，是模型的非线性扭曲力。根据如何在训练算法中决定权重，我们需要选择不同的激活函数：
 
 | 名称 | 标准型输入 | 对称型输入 |
 |:---:|:---:|:---:|
@@ -334,9 +343,9 @@ SVM使用核函数的缺点是容易对数据过拟合，此时避免过拟合�
 
 其中Sigmoid是与神经元一起使用的默认函数，因为其有能力做平滑决策。
 
-使用激励函数的最大优点在于，它们可以作为缓存每层输入值的一种方式。这一点很有用处，因为神经网络可以借此寻找模式和忽略噪声。
+使用激活函数的最大优点在于，它们可以作为缓存每层输入值的一种方式。这一点很有用处，因为神经网络可以借此寻找模式和忽略噪声。
 
-激励函数有两个主要类别：
+激活函数有两个主要类别：
 - 倾斜函数：很好的默认选择
 - 周期函数：用于给大量噪声的数据建模
 
@@ -350,6 +359,12 @@ SVM使用核函数的缺点是容易对数据过拟合，此时避免过拟合�
 - Rprop算法(用的较多)：不根据公式计算权重变化，它仅使用权重改变量的符号，以及一个增加因子和减小因子。
 
 这些算法有一个共同点：它们试图找到一个凸误差表面的最优解，即梯度下降。
+
+神经网络算法流程：
+1. 通过向前传导算法获取各层的激活值。
+2. 通过输出层的激活值![](http://latex.codecogs.com/gif.latex?v^{m})和损失函数来做决策并获得损失。损失函数：<br/>![](http://latex.codecogs.com/gif.latex?L^{*}(x)=L(y,v^{(m)}))
+3. 通过反向传播算法算出各个Layer的局部梯度：<br/>![](http://latex.codecogs.com/gif.latex?\delta^{(i)}=\frac{\partial{L(x)}}{\partial{u^{(i)}}})
+4. 使用各种优化器优化参数。
 
 迭代运算计算权重会比较快，这样做不试图计算关于权重的误差函数的导数，而是计算每个神经元权重的权重变化，此为delta规则：<br/>
 ![](http://latex.codecogs.com/gif.latex?\Delta{w_{ji}}=\alpha{(t_{j}-\phi(h_{j}))\phi'(h_{j})}x_{i})<br/>
@@ -368,6 +383,15 @@ SVM使用核函数的缺点是容易对数据过拟合，此时避免过拟合�
     - 容错率太小的话，训练时间会变长。
     - 一般可以选择1000个epoch或迭代作为训练周期的起点。如此，可以建立一些复杂模型，却也不用担心训练过度。
     - 最大epoch和最大误差共同定义了解决方案的收敛点，它们作为一种信号，告诉我们可以什么时候停止算法的训练，生成一个神经网络。
+
+损失函数：
+- 距离损失函数(最小平方误差准则)：<br/>![](http://latex.codecogs.com/gif.latex?L(y,G(x))={\Vert{y-G(x)}\Vert}^{2}=[y-G(x)]^{2})
+- 交叉熵损失函数(交叉熵是信息论中的概念，此函数要求G(x)的每一位取值都在(0,1)中)：<br/>![](http://latex.codecogs.com/gif.latex?L(y,G(x))=-[ylnG(x)+(1-y)ln(1-G(x))])
+- log-likelihood损失函数(要求G(x)是一个概率向量，假设y∈ck)：<br/>![](http://latex.codecogs.com/gif.latex?L(y,G(x))=-lnv_{k})
+
+神经网络向前传导和反向传播的区别：向前传导是由后往前将`激活值`一路传导，反向传播则是由前往后将`梯度`一路传播。<br/>
+什么是前？什么是后？<br/>
+前与后是由Layer与输出层的相对位置给出的，越靠近输出层的Layer越前，反之越靠后。
 
 #### 前馈神经网络
 对于三层前馈神经网络，其按输入层、中间层、输出层的顺序对输入和权重进行乘积加权，用所谓softmax函数对输出层最后的计算值进行正规化处理，得到概率结果。<br/>
@@ -574,6 +598,7 @@ alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的�
 
 协方差计算：<br/>![](http://latex.codecogs.com/gif.latex?cov(x,y)=\frac{\sum_{i-1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{n-1})
 
+参数求解：<br/>
 ![](http://latex.codecogs.com/gif.latex?\beta=\frac{cov(x,y)}{var(x)})
 
 ![](http://latex.codecogs.com/gif.latex?\alpha=\bar{y}-\beta\bar{x})
@@ -734,7 +759,7 @@ EM聚类的不足：当数据映射成奇异协方差矩阵时，可能不会收
 1. 机器学习中最重要的不是算法而是数据，数据决定了算法的能力上限，而算法只是逼近这个上限。
 2. 机器学习模型从特征中进行学习，特征有多少价值，机器才可能习得多少价值。即便使用同样的模型算法，但如果用于学习的特征不同，所得结果的价值也不同，选取的特征越合适，含金量越高，最后学习到的结果也越有价值。
 
-# 重要的概率分布
+# 概率分布可视化
 摘自 => [Here](https://github.com/graykode/distribution-is-all-you-need)
 
 ![重要的概率分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/overview.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
@@ -829,6 +854,44 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 ![t分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/student_t.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 
+# 神经网络激活函数可视化
+
+## 逻辑函数Sigmoid
+![](http://latex.codecogs.com/gif.latex?\Phi(x)=Sigmoid(x)=\frac{1}{1+e^{-x}})
+
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/sigmoid.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+## 正切函数Tanh
+![](http://latex.codecogs.com/gif.latex?\Phi(x)=tanh(x)=\frac{1-e^{-2x}}{1+e^{-2x}})
+
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/tanh.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+## 线性整流函数ReLU
+![](http://latex.codecogs.com/gif.latex?\Phi(x)=ReLU(x)=max(0,x))
+
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/relu.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+## ELU函数
+![](http://latex.codecogs.com/gif.latex?\Phi(\alpha,x)=ELU(\alpha,x)=\begin{cases}{\alpha(e^{x}-1),x<0}\\{x,x\geq{0}}\end{cases})
+
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/tanh.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+## Softplus函数
+![](http://latex.codecogs.com/gif.latex?\Phi(x)=ln(1+e^x))
+
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/softplus.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
+## 恒同映射Identity
+![](http://latex.codecogs.com/gif.latex?\Phi(x)=x)
+
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/identity.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+
 # 札记
 1. 损失函数L(x)和成本函数J(x)的区别：损失函数针对单个样本，成本函数针对整个数据集。
 2. 数据预处理占了整个数据分析业务的大半时间。
@@ -875,8 +938,10 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 43. 机器学习算法学习目标函数的近似值，将输入数据映射到期望的输出值。
 44. 一个集合或者类型的特征是否优于另一个取决于学习任务的目标函数是什么。
 45. 一个机器学习算法是否优于另一个取决于为分类器产生的特征的数据对应的分类任务的范围(这里以分类为例)。
-46. 想要使用梯度下降法，要求损失函数处处可导。
+46. 想要使用梯度下降法，损失函数要处处可导。
 47. 对于机器学习原始算法，可能需要使用其对偶形式来简化问题。
+48. 只有对应的一位为1而其他位都是0的编码被称为one-hot representation(独热编码)。
+49. 梯度是函数值上升最快的方向，所以负梯度是函数下降最快的方向。
 
 # Python第三方库的下载
 Python第三方库的下载遇到超时失败时，可以加上两个参数：<code>--no-cache-dir</code>和<code>--default-timeout=1000</code>。<br/>
@@ -926,22 +991,3 @@ pip --no-cache-dir --default-timeout=1000 install xxx
 ## 深度学习
 - 《Deep Learning from Scratch》（《深度学习入门》）
 - 《零起点TensorFlow快速入门》
-
-# Scipy包的子模块
-| 模块名 | 功能 |
-|:---:|:---:|
-| scipy.cluster | 向量量化 |
-| scipy.constants | 数字常量 |
-| scipy.fftpack | 快速傅里叶变换 |
-| scipy.integrate | 积分 |
-| scipy.interpolate | 插值 |
-| scipy.io | 数据输入输出 |
-| scipy.linalg | 线性代数 |
-| scipy.ndimage | N维图像 |
-| scipy.odr | 正交距离回归 |
-| scipy.optimize | 优化算法 |
-| scipy.signal | 信号处理 |
-| scipy.sparse | 稀疏矩阵 |
-| scipy.spatial | 空间数据结构与算法 |
-| scipy.special | 特殊数学函数 |
-| scipy.stats | 统计函数 |
