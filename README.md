@@ -225,7 +225,8 @@ def rmse(predicts, actuals):
 逻辑回归与感知机相似，它的特点是：
 - 除了输出以外，还给出输出类别的概率值
 - 既可以在线学习也可以批量学习
-- 预测性能一般，但学习速度快
+- 预测性能一般(有时候欠拟合)，但学习速度快
+- 结构简单、原理清晰，但在多特征、多类别的数据环境下容易过拟合
 - 为防止过拟合，可以添加正则化项（这点比感知机好）
 - 只能分离线性可分数据，决策边界也是直线
 
@@ -235,8 +236,19 @@ def rmse(predicts, actuals):
 它的表达式是：<br/>
 ![](http://latex.codecogs.com/gif.latex?Sigmoid(x)=\frac{1}{1+e^{-x}})
 
-所以逻辑回归拟合模型公式：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/sigmoid.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+根据Logistic函数的表达式可知：对于Logistic函数，自变量越接近于-∞，函数值越接近于0，而自变量越接近于+∞，函数值越接近于1。
+
+所以，逻辑回归拟合模型公式为：<br/>
 ![](http://latex.codecogs.com/gif.latex?y_{i}=Sigmoid(x_{i}\beta)=\frac{1}{1+e^{-x_{i}\beta}})
+
+根据表达式，我们可知Logistic回归是怎样基于Logistic函数将线性模型的预测结果映射成分类问题所需要的预测结果的：
+1. 将线性模型的输出和Logistic函数的输入串联起来。
+2. 当样本为负类时，让线性模型输出的预测值小于0，且越小越好。
+3. 当样本为正类时，让线性模型输出的预测值大于0，且越大越好。
+
+有了Logistic函数进行映射，线性模型不再需要输出某个特定的值，只需满足“让输出(加上Logistic函数以后)尽可能接近0或1”即可，这是不难做到的。（这种操作在深度学习中并不罕见）
 
 线性回归通过最小化误差平方和的方式来拟合模型，最终选出令得到这些观测数据的最大的β。<br/>
 但逻辑回归这里可不是这样的，我们可以直接使用梯度下降法来最大化似然，也就是说我们要计算似然函数及其梯度。
@@ -244,9 +256,23 @@ def rmse(predicts, actuals):
 ![](http://latex.codecogs.com/gif.latex?y_{i}=Sigmoid(x_{i}\beta)=\frac{1}{1+e^{-x_{i}\beta}})<br/>
 由上式知：已知β的情况下，我们的模型指出每个![](http://latex.codecogs.com/gif.latex?y_{i})等于1的概率为![](http://latex.codecogs.com/gif.latex?f(x_{i}\beta))，等于0的概率为![](http://latex.codecogs.com/gif.latex?1-f(x_{i}\beta))
 
+逻辑回归的损失函数：<br/>
+![](http://latex.codecogs.com/gif.latex?y_{i}=Sigmoid(x_{i}\beta)=\frac{1}{1+e^{-x_{i}\beta}})
+
 事实上，最大化对数似然函数会更简单一些：<br/>
 ![](http://latex.codecogs.com/gif.latex?logL(\beta\vert{x_{i},y_{i}})={y_{i}}log{f(x_{i}\beta)}+{(1-y_{i})log(1-f(x_{i}\beta))})<br/>
 由于对数函数是单调递增的，所以任何能够最大化对数似然函数的β也必然能最大化似然函数，反之亦然。
+
+Logistic函数不是直接得到离散的0/1值，它给出的是一种概率。特别是看上面给出的损失函数，这种形式与伯努利分布很相似。
+
+逻辑回归的算法流程：
+1. 为假设函数设定参数w，通过假设函数计算出一个预测值。
+2. 将预测函数带入损失值，计算出一个损失值。
+3. 通过得到的损失值，利用梯度下降等优化方法调整参数w，不断重复这个过程直到损失最小。
+
+逻辑回归的应用：
+1. 简单二分类问题的求解
+2. 作为其他复杂算法的“零件”，如神经网络算法的激活函数就使用到了Sigmoid函数
 
 #### 多分类线性模型
 除了逻辑回归，绝大多数的线性分类模型只能适用于二分类问题，而不直接适用于多分类问题，推广的办法是“一对其余”。<br/>
@@ -412,20 +438,34 @@ M-P模型：<br/>
 ### KNN
 KNN是一种搜索最邻近的算法。当输入一个未知的数据时，该算法根据邻近的K个已知数据所属类别，以多数表决的方式确定输入数据的类别。它不仅仅可以用作一个分类器，还可以用于搜索类似项。
 
-K值通过交叉验证予以确定，确定距离则多使用欧氏距离，有时也会使用马哈拉诺比斯距离等。
+KNN和其他算法的比较：
+- 比起朴素贝叶斯，KNN的规则简单很多(因为只涉及特征与类别之间的简单关联)。
+- 比起Logistic等使用损失函数和最优化方法(如梯度下降等)来不断调整线性函数权值进而达到拟合的算法，KNN依靠“多数表决”的思想求得最优解。
+- Logistic算法依靠加权求和处理维度的选择，KNN依然是依靠“多数表决”的思想来处理此问题。
+
+“多数表决”的思想其实有着深刻的道理，在计算机科学的很多地方都有应用：
+- KNN等算法
+- 自治的计算机体系结构(如分布式系统)
+- 区块链
+
+KNN的优点：
+- KNN容易理解，实现简单，不需要太多的调节就容易取得不错的性能，只要距离得当就比较容易取得不错的应用效果
+- KNN可以避免试图不断减小误差的最优化算法可能将局部最优解误认为全局最优解的问题，求得全局最优解
+- 添加新数据时不需要对整个数据集进行重新训练，可实现在线训练
+
+KNN的缺点（导致实际用的少）：
+- 对样本分布比较敏感，正负样本分布不平衡时会对结果产生明显影响
+- 不能处理具有很多特征的数据集
+- 数据规模大时计算量可能很大，得到结果也比较慢
 
 NLP等具有高维稀疏数据的领域(维度灾难)，常常无法直接使用KNN获得良好的预测性能(高维空间过于巨大以以至于其中的点根本不会表现出彼此邻近)，需要进行降维处理。
-
-KNN容易理解，实现简单，不需要太多的调节就容易取得不错的性能，只要距离得当就比较容易取得不错的应用效果。
-
-KNN的规则比朴素贝叶斯简单很多，因为只涉及特征与类别之间的简单关联。
 
 KNN的两个核心参数：
 - K值
 - 数据点之间距离的度量方法(距离的计量方法)
 
 K值的选择：
-- 猜测式选择
+- 猜测式选择(根据经验一般在3-10之间)
 - 启发式选择
     - 挑选互质的类和K值
     - 选择大于或等于类数+1的K
@@ -439,10 +479,10 @@ K值的选择：
 距离的度量：
 - 几何距离(直观地测量一个物体上从一个点到另一个点有多远)
     - 闵可夫斯基距离：<br/>![](http://latex.codecogs.com/gif.latex?d_{p}(x,y)=(\sum\limits_{i=0}^{n}|x_{i}-y_{i}|^{p})^{\frac{1}{p}})
-    - 欧几里得距离(p=2)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=0}^{n}(x_{i}-y_{i})^{2}})
+    - 欧几里得距离(p=2 比较常用)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=0}^{n}(x_{i}-y_{i})^{2}})
     - 余弦距离(计算稀疏矢量之间的距离的速度快)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\frac{x.y}{\Vert{x}\Vert\Vert{y}\Vert})
 - 计算距离
-    - 曼哈顿距离(适用于诸如图的遍历、离散优化之类的有边沿约束的问题)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=0}^{n}\vert{x_{i}-y_{i}}\vert)
+    - 曼哈顿距离(p=1 适用于诸如图的遍历、离散优化之类的有边沿约束的问题)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sum\limits_{i=0}^{n}\vert{x_{i}-y_{i}}\vert)
     - Levenshtein距离(工作原理类似于通过改变一个邻居来制作另一个邻居的精确副本，需要改变的步骤数就是Levenshtein距离，它用于自然语言处理)：<br/>![](http://latex.codecogs.com/gif.latex?\lambda\sum\limits_{i=1}^{m}{|w_{i}|})
 - 统计距离
     - 马哈拉诺比斯(Mahalanobis)距离(取成对的数据点并测量平方差)：<br/>![](http://latex.codecogs.com/gif.latex?d(x,y)=\sqrt{\sum\limits_{i=1}^{n}{\frac{(x_{i}-y_{i})^{2}}{s_{i}^{2}}}})
@@ -458,9 +498,13 @@ def lev(a, b):
     return min(lev(a[1:],b[1:])+(a[0]!=b[0]), lev(a[1:],b)+1, lev(a,b[1:])+1)
 ```
 
-KNN的核心问题（导致实际用的少）：
-- 预测速度慢
-- 不能处理具有很多特征的数据集
+Scikit-Learn中有代表性的KNN类：
+- KNeighborsClassifier：经典KNN分类算法
+- KNeighborsRegressor：利用KNN处理回归问题
+- RadiusNeighborsClassifier：基于固定半径来查找最邻近的分类算法
+- NearestNeighbors：基于无监督学习实现KNN算法
+- KDTree：无监督学习下基于KDTree来查找最近邻的分类算法
+- BallTree：无监督学习下基于BallTree来查找最近邻的分类算法
 
 ### 决策树、随机森林、GBDT
 决策树是机器学习领域树状算法的代表，发展得到了随机森林、梯度提升决策树等新的算法。
@@ -604,7 +648,7 @@ alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的�
 - 回归树（如CART，基于决策树，能处理非线性数据）
 - 支持向量回归（SVR，基于SVM，能处理非线性数据）
 
-### 简单线性回归
+### 一元线性回归
 基于回归的线性模型可以表示为这样的回归模型：对单一特征的预测结果是一条直线，两个特征时则是一个平面，在更高维度时是一个超平面。
 
 对于有多个特征的数据集而言，线性模型可以非常强大。特别地，如果特征数量大于训练数据点的数量，则任何目标y都可以在训练集上用线性函数完美拟合。
@@ -640,10 +684,10 @@ alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的�
 L2范数加的这个平方与原本求解欧氏距离的根号抵消，实则是对计算结果进行了同步放大。这种放大的合理之处在于：原本误差小的会更小，而原本误差大的会更大，不会出现大小混乱的情况。
 
 优化方法的表达式：<br/>
-![](http://latex.codecogs.com/gif.latex?\min\limits_{w,b}{\Vert{\hat{y}-y}\Vert}_{2}^{2})
+![](http://latex.codecogs.com/gif.latex?\min\limits_{\beta,\alpha}{\Vert{\hat{y}-y}\Vert}_{2}^{2})
 
 根据优化方法调参的方法：<br/>
-![](http://latex.codecogs.com/gif.latex?w'=w-(LearningRate)*(Loss))
+![](http://latex.codecogs.com/gif.latex?{\beta}'={\beta}-(LearningRate)*(Loss))
 
 学习率是一个超参数，由外部输入给定，决定了每次的调整幅度。学习率低则调整慢，学习率高则可能错过最佳收敛点。
 
@@ -655,7 +699,7 @@ L0范数：向量中非0元素的个数。
 
 简单线性回归选择最小二乘法与极大似然估计有关。<br/>
 假设数据样本![](http://latex.codecogs.com/gif.latex?v_{1},\cdots{,v_{n}})服从由未知参数θ确定的概率分布：<br/>
-![](http://latex.codecogs.com/gif.latex?p(v_{1},\cdots{,v_{n}}\vert{\theta})})<br/>
+![](http://latex.codecogs.com/gif.latex?p(v_{1},\cdots{,v_{n}}\vert{\theta}))<br/>
 尽管不知道θ的值，但可以回过头来通过给定样本与θ的相似度来考量这个参数：<br/>
 ![](http://latex.codecogs.com/gif.latex?L(\theta\vert{v_{1},\cdots{,v_{n}}}))<br/>
 按照这种方法，θ最可能的值就是最大化这个似然函数的值，即能够以最高概率产生观测数据的值。在具有概率分布函数而非概率密度函数的连续分布的情况下，我们也可以做到同样的事情。<br/>
@@ -664,8 +708,8 @@ L0范数：向量中非0元素的个数。
 由于待估计的参数产生整个数据集的可能性为产生各个数据的可能性之积，因此令误差平方和最小的α和β最有可能是我们所求的。<br/>
 换而言之，在此情况下(包括这些假设)，最小化误差的平方和等价于最大化产生观测数据的可能性。
 
-### 多重线性回归
-![](http://latex.codecogs.com/gif.latex?y={\alpha}+{\beta_{1}}x_{1}+\cdots{+{\beta_{n}}x_{n}})
+### 多元线性回归
+![](http://latex.codecogs.com/gif.latex?y={\alpha}+{\beta_{1}}x_{1}+\cdots{+{\beta_{n}}x_{n}}=\alpha+\beta^{T}x)
 
 需要满足的额外条件：
 - x的各列是线性无关的，即任何一列绝不会是其他列的加权和。
@@ -683,15 +727,21 @@ L0范数：向量中非0元素的个数。
 - L2正则化项(用于Ridge回归)：![](http://latex.codecogs.com/gif.latex?\lambda\sum\limit_{i=1}^{m}{|w_{i}|})
 - ElasticNet回归混合了Lasso回归和Ridge回归
 
-#### Ridge回归
 Ridge回归和Lasso回归是添加了正则化的线性回归，Ridge回归使用L2范数，Lasso回归使用L1范数。<br/>
 所谓正则化，指的是我们给误差项添加一个惩罚项，该惩罚项会随着β的增大而增大，能够抑制某个系数可能过大的影响(最终形成有偏估计)。<br/>
 我们试图使误差项和惩罚项的组合值最小化，得到所谓最优解。
 
 通过实测可以知道，随着模型可用的数据越来越多，两个模型的性能都在提升，最终线性回归的性能追上了岭回归。如果有足够多的训练数据，正则化变得不那么重要，线性回归和岭回归将具有相同的性能，但线性回归的训练性能在下降（如果添加更多数据，模型将更难以过拟合或记住所有数据）。
 
+#### Ridge回归
+优化方法的表达式：<br/>
+![](http://latex.codecogs.com/gif.latex?\min\limits_{\beta,\alpha}{\Vert{\hat{y}-y}\Vert}_{2}^{2}+a{\Vert{\beta\Vert}_{2}^{2})
+
 #### Lasso回归
 关于Lasso回归使用的L1范数，其实就是系数的绝对值之和，其结果是：使用Lasso时的某些系数刚好为0，这说明某些特征会被模型完全忽略。这个过程可以看做一个自动化的选择过程。
+
+优化方法的表达式：<br/>
+![](http://latex.codecogs.com/gif.latex?\min\limits_{\beta,\alpha}{\frac{1}{2n}}{\Vert{\hat{y}-y}\Vert}_{2}^{2}+a{\Vert{\beta\Vert}_{1})
 
 对比一下Ridge回归和Lasso回归：
 - 关于惩罚项，Ridge回归使用L2范数(平方)，Lasso回归使用L1范数(绝对值)。
@@ -790,7 +840,13 @@ EM聚类的不足：当数据映射成奇异协方差矩阵时，可能不会收
 - 随时间增长逐步减小步长
 - 在每一步中通过最小化目标函数的值来选择合适的步长
 
-# 机器学习中的缺失值及其填充处理
+# 机器学习分类问题的类别表示方法
+常见的类别表示方法有三种：
+- 数字形式：这种方式比较直接，且表示形式不唯一。比如1表示正类、-1表示负类，又比如1表示正类，0表示负类。
+- 向量形式：在深度学习分类、多分类等分类情形下用的比较多，涉及一些编码问题。比如独热编码ABC三个类，A类就是[1,0,0]，B类就是[0,1,0]，C类则是[0,0,1]。
+- 概率值形式：不像前两个那样直接给出确切的分类，而是给出属于每个类的概率，也常使用向量表示。比如ABC三个类，某个属于A类的对象可能表示为[0.88, 0.06, 0.06]。
+
+# 机器学习的缺失值及其填充处理
 大多数机器学习算法不允许目标值或特征数组中存在缺失值。因此，不能简单的忽略数据中的缺失值，而是要在数据预处理阶段解决这个问题。
 
 最简单的解决方法是删除所有含其缺失值的观察值，用Numpy或Pandas很容易实现。
@@ -815,10 +871,10 @@ EM聚类的不足：当数据映射成奇异协方差矩阵时，可能不会收
 
 最后说一下，如果要采用填充策略，最好是创建一个二元特征来表明该观察值是否包含填充值。
 
-# 机器学习中的异常值的识别和处理
+# 机器学习的异常值及其识别和处理
 用于机器学习的数据难免有异常值的存在，这就需要我们识别并处理异常值。
 
-可惜，并没有一个通用的识别异常值的解决方案，每种方法都有自己的优势和不足，尝试综合使用多种技术（如基于EllipticEnvelope和基于IQR的识别）并从整体上来看结果。
+可惜的是，并没有一个通用的识别异常值的解决方案，每种方法都有自己的优势和不足，尝试综合使用多种技术（如基于EllipticEnvelope和基于IQR的识别）并从整体上来看结果。
 
 对于被判定为异常值的数据，我们不妨也关注一下。比如我们的数据集是一个关于房子的数据集，其中一个特征是房间数。此时，如果一个房子因为拥有100+个房间被判定为异常值，那我们可以问问自己：这个数据真的是异常数据，还是它本质是一个旅馆呢？
 
@@ -1002,7 +1058,7 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 
 
 ## ELU函数
-![](http://latex.codecogs.com/gif.latex?\Phi(\alpha,x)=ELU(\alpha,x)=\begin{cases}{\alpha(e^{x}-1),x<0}\\{x,x\geq{0}}\end{cases})
+![](http://latex.codecogs.com/gif.latex?\Phi(\alpha,x)=ELU(\alpha,x)={\begin{cases}{\alpha(e^{x}-1),x<0}\\{x,x\geq{0}}\end{cases}})
 
 ![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/tanh.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
