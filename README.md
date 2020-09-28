@@ -196,8 +196,8 @@ wi代表模型参数，b是误差项常数，φ代表激活函数。
 
 感知机的参数的权重向量常用随机梯度下降法(SGD)来确定，和正类相关的权重值为正数，和负类相关的权重值为负数。
 
-感知机的激活函数应该选择类似于阶跃函数的、能将输出值进行非线性变换的函数(神经网络的激活函数是连续可导的)，比如经典的海维赛德阶跃函数(单元阶跃函数)：
-![](http://latex.codecogs.com/gif.latex?g(x)=\begin{cases}{1,x>0}\\{0,x\leq{0}}\end{cases})<br/>
+感知机的激活函数应该选择类似于阶跃函数的、能将输出值进行非线性变换的函数(神经网络的激活函数是连续可导的)，比如经典的海维赛德阶跃函数(单元阶跃函数)：<br/>
+[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/阶跃函数.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
 使用Sigmoid函数也可以，后面会提到。
 
 感知机的损失函数一说是Hinge函数max(0, -twx)，一说是被误分类的样本点到当前分离超平面的相对距离的总和：<br/>
@@ -1338,7 +1338,7 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 
 # 神经网络激活函数可视化
 
-[返回神经网络](#神经网络(ANN))
+[返回神经网络](###神经网络(ANN))
 
 ## 逻辑函数Sigmoid
 ![](http://latex.codecogs.com/gif.latex?\Phi(x)=Sigmoid(x)=\frac{1}{1+e^{-x}})
