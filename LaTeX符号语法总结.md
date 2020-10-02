@@ -120,6 +120,13 @@
 |   ![](http://latex.codecogs.com/gif.latex?\ ) white space   |  ![](http://latex.codecogs.com/gif.latex?\backprime) \backprime  |  ![](http://latex.codecogs.com/gif.latex?\prime) \prime  |
 |:---:|:---:|:---:|
 
-
-
-
+## 补充
+矩阵乘法：
+```text
+\begin{gathered}
+\begin{bmatrix} p_1 \\ p_2 \\ \vdots \\p_R \end{bmatrix}
+\begin{bmatrix} a_1 & a_2 & \cdots & a_M \end{bmatrix}
+=
+\begin{bmatrix} p_1a_1 & p_1a_2 & \cdots & p_1a_M \\ p_2a_1 & p_2a_2 & \cdots & p_2a_M \\ \vdots & \vdots & & \vdots \\p_Ra_1 & p_Ra_2 & \cdots & p_Ra_M \end{bmatrix}
+\end{gathered}
+```
