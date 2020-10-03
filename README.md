@@ -330,7 +330,7 @@ Logistic函数不是直接得到离散的0/1值，它给出的是一种概率。
 3. 通过得到的损失值，利用梯度下降等优化方法调整参数w，不断重复这个过程直到损失最小。
 
 逻辑回归算法流程图：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/逻辑回归流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/逻辑回归流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 逻辑回归处理过拟合可以采用与线性回归类似的方法，添加的正则项也很类似。
 
@@ -747,7 +747,7 @@ KNN的算法流程：
 6. 测试元组测试完毕后计算检验指标，继续设定不同K值重新进行训练，选择最优K值。
 
 KNN算法流程图：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/KNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/KNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 K-d树是一种二叉树，也是一种多维空间划分树。它通过把整个多维空间划分为特定的几个部分，然后在特定空间的部分内进行相关搜索操作，进而减少搜索次数并达到快速搜索的目的。<br/>
 K-d树可以通过特殊的结构存储训练数据，以减少KNN计算距离的次数。
@@ -755,10 +755,10 @@ K-d树可以通过特殊的结构存储训练数据，以减少KNN计算距离�
 K-d树的构建是一个递归的过程：先确定一个初步的切分点来划分左子空间与右子空间，然后对两个子空间的样本点重复寻找切分点，将空间和数据集进一步细分，如此反复，直至空间中只包含一个数据点。
 
 举个例子：T={(2,2), (5,4), (9,7), (4,8), (8,3)} =><br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD3.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD二叉树.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD3.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD二叉树.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 使用K-d树优化KNN搜索可以先找“当前最近邻点”，然后向上回溯查验最近邻的K个点，更新这K个点。
 
@@ -923,6 +923,8 @@ scikit-learn实现的决策树可以传参`criterion`，它的取值选择可以
 - gini：使用基尼系数
 - entropy：使用信息增益
 
+scikit-learn的预剪枝策略参数取值：max_depth、max_leaf_nodes、min_samples_leaf
+
 事实上，决策树虽然不像朴素贝叶斯一样几乎只有计数与统计，但决策树核心的内容——对各种信息不确定性的度量仍逃不出“计数”的范畴。
 
 决策树广泛应用于多领域，特别是商业决策、管理决策等需要决策的领域。
@@ -933,31 +935,79 @@ scikit-learn实现的决策树可以传参`criterion`，它的取值选择可以
 随机森林背后的思想是：每棵树的预测性能都可能较好，但可能对部分数据过拟合。如果构造多棵树，且每棵树的预测可能都相对较好，但都以不同方式拟合，那么我们就可以对这些树的结果综合处理(如取平均)来降低多拟合的影响。
 
 得到随机的决策树以构成决策森林的关键：
-- 依靠Bootstrap集成法(bagging方法)，即对数据进行Bootstrap抽样处理。<br/>这种方法不是利用训练集合中的所有的输入数据来训练每棵决策树，而是利用bootstrap_sample(inputs)的取样结果来训练每棵决策树。因为每一棵决策树都是用不同的数据建立的，因此与其他决策树相比，每一棵都有其独特之处。<br/>该方法的另一个好处是可以统一使用非抽样数据来测试每一棵决策树，这意味着如果你的模型效果评测方式设计得巧妙，完全可以将所有数据都用于训练集。
+- 依靠Bootstrap集成法(bagging方法)，即对数据进行Bootstrap自主采样。<br/>这种方法不是利用训练集合中的所有的输入数据来训练每棵决策树，而是利用bootstrap_sample(inputs)的取样结果来训练每棵决策树。因为每一棵决策树都是用不同的数据建立的，因此与其他决策树相比，每一棵都有其独特之处。<br/>该方法的另一个好处是可以统一使用非抽样数据来测试每一棵决策树，这意味着如果你的模型效果评测方式设计得巧妙，完全可以将所有数据都用于训练集。
 - 在分类时不断变换选择最佳属性(best_attribute)进行划分。这里不是说选择全部的剩余属性进行划分，而是先从中随机选取一个子集，然后从中寻找最佳属性进行划分。
 
 数学上可以证明，随机森林既能减少过拟合，又能保持树的预测能力，所以随机森林是不错的算法。
 
+随机森林随机化的两种方法：
+- 随机选择用于构造决策树的数据点。
+- 随机选择每一次划分测试的特征。
+
 随机森林与决策树的比较：
 - 随机森林预测性能比决策树高，参数少，调整起来简单顺手，决策边界看起来也很像决策树。
 - 单纯的决策树随着数据的增加，其学习结果大为改变，而随机森林的学习结果较为稳定。
+- 由于构造随机森林的随机性，算法需要考虑多种可能的解释，所以随机森林比单棵决策树更能从总体上把握数据的特征。
+- 对随机森林做出解释可能比较麻烦，随机森林的可解释性和可视化不如决策树。
+- 随机森林使用到了特征子集，所以深度往往比决策树要大。
 
 随机森林与GBDT树的比较：
 - 随机森林算法不需要剪枝处理，所以主要参数只有两个，比GBDT少，但是随机森林比GBDT容易过拟合。
 
-随机森林算法仅通过每个结点上的一个特征随机样本来选择最佳组织方式。<br/>
+随机森林算法仅通过每个结点上的一个特征随机样本来选择最佳组织方式，而不是对每个结点都寻找最佳测试。<br/>
+每个结点中特征子集的选择是相互独立的，这样树的每个结点都可以使用特征的不同子集来做出决策。<br/>
 随机森林算法先准备若干个特征组合，以多数投票表决的方式将性能好的学习机得到的多个预测结果进行集成。为了完成多棵决策树的独立学习，可采取并行学习。
 
 随机森林中，树的数量是一个重要的超参数。增加树的数量会提升模型性能，却会消耗更多的算力。
 
+max_features决定了每棵树的随机性大小。它如果接近n_features，则数据集划分几乎没有随机性(几乎只剩自主采样的随机性)；如果接近1，则划分时无法选择对哪些特征进行测试。<br/>
+- max_features较大：随机森林中的树会极其相似，利用最独特的特征可以轻松拟合数据。
+- max_features较小：随机森林中的树会差异很大，为了更好地拟合将不得不加大树的深度。
+
 由于Bagging算法提供正则化，所以在随机森林中正则化的技巧(如剪枝或者对每个叶子结点要求训练实例数量的最小值)的重要性会降低。
 
+随机森林可用于解决回归问题和分类问题，使用随机森林进行预测，首先要对森林中的每一棵树进行预测。
+- 对于回归问题，可通过求解数值的数学期望的方式来做出最终预测。
+- 对于分类问题，可通过求解概率的数学期望的方式来做出最终预测。
+
+随机森林比单独每棵树的过拟合都要小，给出的决策边界也更符合直觉。实际应用中，我们会用到成百上千棵树，从而得到更平滑的边界。<br/>
+实际上，树越多，它对随机状态选择的鲁棒性就越好。
+
+随机森林不适合高维稀疏数据(如文本数据)，会消耗更多的内存，训练和预测的速度也会更慢，此时改用线性模型反而可能更为适合。
+
 #### 梯度提升决策树(GBDT)
-GBDT属于GBM的一种。
+GBDT属于GBM的一种，它通过合并多棵决策树来构建一个更为强大的模型，可用于回归问题和分类问题。
+
+GBDT采用连续的方式构造树，每棵树都试图纠正前一棵树的错误。
+
+GBDT的默认构造没有随机化，而是用到了强预剪枝。
+
+GBDT通常使用深度很小(1~5)的树，从模型的角度，占用的内存相对较少，预测快(下文还有关于串行并行的讨论)。
+
+GBDT的思想是合并许多简单的弱学习器(如深度较小的树)。<br/>
+GBDT中每棵树只能对部分数据做出好的预测，随着添加的树越来越多，可通过不断迭代提高性能。
 
 如果说随机森林算法通过并行学习利用预测结果，那么GBDT采用的则是针对采样数据串行学习浅层树的梯度提升方法。<br/>
 它将预测值与实际值的偏差作为目标变量，一边弥补缺点，另一边由多个学习器进行学习。<br/>
-由于穿性学习比较耗时，参数也比随机森林多，所以调整代价较大，不过能获得比随机森林更好的预测性能。
+由于串行学习比较耗时，参数也比随机森林多，所以调整代价较大，不过能获得比随机森林更好的预测性能(如果参数设置靠谱的话)。
+
+GBDT比随机森林多learning_rate这个参数，名为学习率，用于控制每棵树纠正前一棵树错误的强度。learning_rate越高，模型越复杂。<br/>
+增大GBDT的n_estimators参数可向集成中添加更多的树，使得模型有更多机会纠正训练集的错误，可以增加模型复杂度(在时间、内存允许的条件下尽可能大)。<br/>
+GBDT的max_depth(max_leaf_nodes)参数设置每棵树的最大深度，一般不超过5，可以降低每棵树的复杂度.
+
+GBDT的缺点：
+- 需要仔细调参
+- 训练时间可能较长
+- 不适用于高维稀疏数据
+
+GBDT的优点：
+- 不需要对数据进行缩放就可以有良好表现
+- 在二元特征与连续特征同时存在的数据集上表现良好
+
+GBDT模型的特征的重要性与随机森林差不多，只是GBDT完全忽略了某些特征(决策树更是)。(所以前面说所以随机森林更能从总体上把握数据的特征)
+
+GBDT和随机森林在类似数据上表现都很好，所以可以先尝试随机森林(鲁棒性好)。<br/>
+如果随机森林效果很好但预测时间太长，或者机器学习模型精度小数点后第二位的提高也很重要，则可以切换成GBDT。
 
 ### 集成学习
 集成学习是合并多个机器学习模型来构建更强大的机器学习模型的方法，它针对多个学习结果进行组合。这样的模型有很多，已证明有两种集成模型对大量分类和回归的数据集都有效，那就是随机森林和梯度提升决策树，它们都以决策树为基础，而预测性能可能比单纯的决策树好一些。
@@ -1059,19 +1109,34 @@ scikit-learn没有实现堆叠元估计器，但可以继承BaseEstimator类去�
 ### 贝叶斯(分类)算法
 贝叶斯算法是一类算法的总称，这类算法均以贝叶斯算法为基础，所以统称贝叶斯分类算法。
 
-统计学有两大学派，分别是频率学派和贝叶斯学派。贝叶斯学派的核心是贝叶斯公式，这也是朴素贝叶斯算法的核心。<br/>
+统计学有两大学派，分别是频率学派和贝叶斯学派。<br/>
+- 频率学派强调频率的自然属性，认为应该使用事件在重复试验中发生的频率的估计。频率学派把模型参数固定，注重样本随机性。
+- 贝叶斯学派不强调事件发生的客观随机性，认为仅仅是观察者不知道事件的结果，即随机性的根源不在于事件，而在于观察者对该事件的知识状态。贝叶斯学派将样本视为固定的，将模型参数视为关键。
+
+贝叶斯学派的核心是贝叶斯公式，这也是朴素贝叶斯算法的核心。<br/>
 想要熟悉贝叶斯公式，先要掌握这几个概念：条件概率、先验概率、后验概率、似然度。<br/>
 学过《概率论与数理统计》的我们应该很熟悉贝叶斯定理，它是基于事件发生的条件概率而构建的一种判定方法。所以，贝叶斯分类算法就是一种以概率论为基础的分类算法。
 
 贝叶斯公式的核心是条件概率，背后的核心哲学是相关性。<br/>
 关于相关性，一定要注意相关性≠因果性，因果性一定是A→B这样的，而相关性是建立在统计学基础上的。
 
+极大似然(ML)估计视待估参数为一个未知但固定的量，不考虑观察者(先验知识)的影响，符合频率学派的思想。<br/>
+![](http://latex.codecogs.com/gif.latex?p(\tilde{X}|\theta)=\prod_{i=1}^{N}p(x_{i}|\theta))<br/>
+![](http://latex.codecogs.com/gif.latex?\hat{\theta}=\arg\max_{\theta}p(\tilde{X}|\theta)=\arg\max_{\theta}{\prod_{i=1}^{N}p(x_{i}|\theta)})<br/>
+求最值需要求导，两边取对数后求导更为方便：<br/>
+![](http://latex.codecogs.com/gif.latex?\ln{p(\tilde{X}|\theta)}=\ln{\prod_{i=1}^{N}p(x_{i}|\theta)}=\sum\limits_{i=1}^{N}{\ln{p(x_{i}|\theta)}})<br/>
+计算![](http://latex.codecogs.com/gif.latex?\frac{\partial{\ln{p(\tilde{X}|\theta)}}}{\partial{\theta}})即可。
+
+极大后验概率(MAP)估计视待估参数为随机变量，想要求解参数θ在训练集下所谓的真实出现的概率，符合贝叶斯学派的思想。<br/>
+![](http://latex.codecogs.com/gif.latex?\hat{\theta}_{MAP}=\arg\max_{\theta}{p(\theta|\tilde{X})}=\arg\max_{\theta}{p(\theta)\prod_{i=1}^{N}{\ln{p(x_{i}|\theta)}}})<br/>
+![](http://latex.codecogs.com/gif.latex?\hat{\theta}_{MAP}=\arg\max_{\theta}{\ln{p(\theta|\tilde{X})}}=\arg\max_{\theta}{[\ln{p(\theta)}+\sum\limits_{i=1}^{N}{\ln{p(x_{i}|\theta)}}]})
+
 在贝叶斯学派看来，世界不是静止和绝对的，而是动态和相对的，它希望能用已知的经验来进行分析和判断。<br/>
 如此就涉及到了两个过程：
 1. 经验的来源：已知类别而统计特征(某一特征在该类中的出现概率)，将类别分解为特征概率。
 2. 根据已知经验做出判断的方法：使用第一步的结果，已知特征而推测类别，把知道的统计情况还原成某一个类别。
 
-所以我们要求的是类别C1的后验概率：<br/>
+我们需要求解的是类别C1的后验概率：<br/>
 ![](http://latex.codecogs.com/gif.latex?P(C_{1}|X_{1},X_{2},\cdots{X_{n}}))<br/>
 求解后验概率需要求解似然度，X1特征的似然度可以这样求：<br/>
 ![](http://latex.codecogs.com/gif.latex?P(X_{1}|C_{1},X_{2},\cdots{X_{n}}))
@@ -1120,10 +1185,16 @@ scikit-learn没有实现堆叠元估计器，但可以继承BaseEstimator类去�
 朴素贝叶斯算法的缺点：
 - 坚信条件独立性假设导致如果不满足此条件(如特征之间具有明显关联性)可能造成不小的预测偏差。
 
-朴素贝叶斯算法的基本流程：
+朴素贝叶斯算法的基本流程(在估计参数时选择ML估计，决策时选择MAP估计)：
 1. 统计样本数据，得到先验概率P(y)和似然度P(x|y)。
 2. 根据待预测样本所包含的特征，对不同类分别进行后验概率计算。
 3. 比较y1,y2,...,yn的后验概率，输出的预测就是概率值最大的类。
+
+朴素贝叶斯算法背后的数学思想：
+- 使用极大似然估计导出模型的具体参数(先验概率、条件概率)
+- 使用极大后验概率估计作为模型的决策(输出使数据后验概率最大化的类别)
+
+我们选择的参数θ的先验分布，应该与由它和训练集确定的后验分布属同一类型，此时先验分布又称为共轭先验分布。
 
 ![](http://latex.codecogs.com/gif.latex?\hat{y}=arg\max\limits_{y}P(y)\prod_{i=1}^{n}{P(x_{i}\vert{y})})<br/>
 由上式可看出，朴素贝叶斯不需要反复迭代逼近来进行最优化。
@@ -1145,6 +1216,68 @@ alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的�
 - 小型数据集上，朴素贝叶分类器性能通常优于逻辑回归分类器。
 - 比之逻辑回归分类器，朴素贝叶斯分类器更容易产生偏差，这可以防止其拟合噪声。
 - 上述偏差也会阻碍朴素贝叶斯模型在大数据集上进行学习。
+
+##### 离散型朴素贝叶斯
+先验概率公式：<br/>
+![](http://latex.codecogs.com/gif.latex?p_{\lambda}(y=c_{k})=\frac{\sum\limits_{i=1}^{N}I(y_{i}=c_{k})}{N},k=1,2,\cdots,K)<br/>
+I()是一个指示函数，它将布尔值转变成0/1。<br/>
+条件概率公式：<br/>
+![](http://latex.codecogs.com/gif.latex?p_{\lambda}(X^{(j)}=a_{jl}|y=c_{k})=\frac{\sum\limits_{i=1}^{N}I(x_{i}^{(j)}=a_{jl},y_{i}=c_{k})}{\sum\limits_{i=1}^{N}I(y_{i}=c_{k})},k=1,2,\cdots,K)<br/>
+
+如果一个训练集中某个类别ck的数据没有涵盖第j维特征的第一个取值，相应估计的条件概率就是0，从而导致模型可能在测试集的分类上产生误差，解决方法是添加平滑项λ。<br/>
+先验概率公式：<br/>
+![](http://latex.codecogs.com/gif.latex?p_{\lambda}(y=c_{k})=\frac{\sum\limits_{i=1}^{N}I(y_{i}=c_{k})+\lambda}{N+K\lambda},k=1,2,\cdots,K)<br/>
+条件概率公式：<br/>
+![](http://latex.codecogs.com/gif.latex?p_{\lambda}(X^{(j)}=a_{jl}|y=c_{k})=\frac{\sum\limits_{i=1}^{N}I(x_{i}^{(j)}=a_{jl},y_{i}=c_{k})+\lambda}{\sum\limits_{i=1}^{N}I(y_{i}=c_{k})+S_{j}\lambda},k=1,2,\cdots,K)<br/>
+λ=0时就是极大似然估计，λ=1时交拉普拉斯平滑(默认使用)。
+
+##### 连续型朴素贝叶斯
+处理连续型变量的方法：
+- 使用小区间切割，直接使其离散化。(此方法难以控制小区间大小且对训练集质量要求较高，所以不如方法二好用)
+- 假设连续型随机变量符合正态分布，再用极大似然估计来计算该变量的条件概率。
+
+定义类别ck的样本数为：<br/>
+![](http://latex.codecogs.com/gif.latex?N_{k}=\sum\limits_{i=1}^{N}{I(y_{i}=c_{k})})<br/>
+条件概率密度(连续型随机变量单点概率为0)：<br/>
+![](http://latex.codecogs.com/gif.latex?p(X^{(j)}=a_{jl}|y=c_{k})=\frac{1}{\sqrt{2\pi}\sigma_{jk}}e^{-\frac{(a_{jl}-\mu_{jk})^{2}}{2\sigma_{jk}^{2}}})<br/>
+μjk的参数估计(极大似然)：<br/>
+![](http://latex.codecogs.com/gif.latex?\hat{\mu}_{jk}=\frac{1}{N_{k}}\sum\limits_{i=1}^{N}{x_{i}^{(j)}I(y_{i}=c_{k})})<br/>
+σjk的参数估计(极大似然)：<br/>
+![](http://latex.codecogs.com/gif.latex?\hat{\sigma}_{jk}^{2}=\frac{1}{N_{k}}\sum\limits_{i=1}^{N}{(x_{i}^{(j)}-\mu_{jk})^{2}I(y_{i}=c_{k})})<br/>
+
+##### 混合型朴素贝叶斯
+混合型朴素贝叶斯算法有两种说法：
+- 用某些分布的概率密度函数算出训练集中各个样本连续性特征相应维度的密度后，根据这些密度的情况将该维度离散化，最后再训练离散型朴素贝叶斯模型。
+- 直接结合离散型朴素贝叶斯模型和连续型朴素贝叶斯模型：<br/>![](http://latex.codecogs.com/gif.latex?\arg\max_{c_{k}}p(y=c_{k})\prod_{j\in{S_{1}}}p(X^{(j)}=x^{*(j)}|y=c_{k})\prod_{j\in{S_{2}}}p(X^{(j)}=x^{*(j)}|y=c_{k}))
+
+第二种实现方法可能导致某种连续型维度主导整个决策，但比较简捷直观(第一种比较繁琐)。
+
+#### 半朴素贝叶斯
+半朴素贝叶斯算法的思想是：弱化独立同分布假设的同时，避免引入过多难以求解的联合概率。
+
+三种经典的半朴素贝叶斯算法：
+- ODE(One-Dependent-Estimator)算法：该算法中各个维度的特征至多依赖于一个其他维度(paj)的特征：<br/>![](http://latex.codecogs.com/gif.latex?p(c_{k}|X=x)=p(y=c_{k})\prod_{i=1}^{n}p(X^{(j)}=x^{(j)}|Y=c_{k},X^{(pa_{j})}=x^{(pa_{j})}))
+- SPODE(Super-Parent-ODE)算法：ODE算法的一个特例，所有维度的特征都依赖于同一个维度的特征，这个被共同依赖的特征叫Super-Parent(使用交叉验证来选择)：<br/>![](http://latex.codecogs.com/gif.latex?p(c_{k}|X=x)=p(y=c_{k})\prod_{i=1}^{n}p(X^{(j)}=x^{(j)}|Y=c_{k},X^{(pa)}=x^{(pa)}))
+- AODE(Averaged-ODE)算法：利用SPODE算法并尝试把许多个训练后的、有足够训练数据量支撑的SPODE模型集成在一起来构建最终的模型。<br/>一般来说，AODE会以所有维度的特征作为Super-Parent训练n个SPODE模型，然后线性组合出最后的模型。
+
+#### 贝叶斯网络
+贝叶斯网络又称为贝叶斯信念网络，它还引入了图论的思想。
+
+贝叶斯网络中：
+- 网络的节点就是单一样本的各个维度上的随机变量![](http://latex.codecogs.com/gif.latex?X^{(1)},X^{(2)},\cdots,X^{(n)})。
+- 网络的边就是节点之间的依赖关系，这些边一般是有向的(无向贝叶斯网常是有向贝叶斯网无向化得来的)。
+- 整个网络中不能出现环路。
+
+类似的表示思想在CRF中也有用到。
+
+贝叶斯网络的主要学习任务是找到恰当的网络结构。<br/>
+常见做法是定义一个打分函数并基于该函数通过某种搜索方法(NP完全)来确定结构。<br/>
+常见的近似方法有两种：
+- 使用贪心法，先定下一个初始网络结构并从该结构出发，逐步调整边试图使得评分变高。
+- 直接限定假设空间(比如假设贝叶斯网络一定是一个树形结构)。
+
+贝叶斯网络的决策方法最理想的情况是：直接根据贝叶斯网络的结构所决定的概率密度来计算后验概率。<br/>
+这是一个NP完全问题，网络结构复杂时将难以在合理的时间内完成，所以需要近似求解，比如使用吉布斯采样(其定义设计马尔可夫链的知识)。
 
 ### 序列归纳(序列分类)
 序列分类器(序列标号器)是给序列中某个单元指派类或者标号的模型。
@@ -1278,7 +1411,7 @@ L0范数：向量中非0元素的个数。
 换而言之，在此情况下(包括这些假设)，最小化误差的平方和等价于最大化产生观测数据的可能性。
 
 线性回归算法流程图：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/线性回归流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/线性回归流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 ### 多元线性回归
 ![](http://latex.codecogs.com/gif.latex?y={\alpha}+{\beta_{1}}x_{1}+\cdots{+{\beta_{n}}x_{n}}=\alpha+\beta^{T}x)
@@ -1551,7 +1684,7 @@ PCA将一系列可能相关联的高维变量减少为一系列被称为主成�
 PCA算法试图使用较少数量的特征对样本进行描述以达到降低空间维数。
 
 一般地，如果我们有M个n维向量，想要将其变换到由M个R维向量表示的新空间中，可以先将R个基向量按行组成矩阵A，再将M个n维向量按列组成矩阵B，向量乘积AB就是变换的结果：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA矩阵表达式.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA矩阵表达式.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
 两个矩阵相乘的意义是：将右边矩阵的每一列行向量变换到左边矩阵每一行行向量为基所表示的空间去，从而实现降维。<br/>
 所以，只要找到合适的p1,p2,...,pR，就能实现对特征矩阵的投影，从而实现降维。
 
@@ -1567,9 +1700,9 @@ PCA算法试图使用较少数量的特征对样本进行描述以达到降低�
 至此，得到将一组n维向量使用PCA算法降为k维(0<k<n)的优化目标：选择k个单位正交基，使得数据变换到这组正交基上后，各字段两两之间协方差为0，而字符的方差尽可能大(在正交的约束下，取最大的k个方差)。
 
 将a和b按列组成矩阵X：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA组合ab.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA组合ab.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
 写出协方差矩阵：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA协方差矩阵.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA协方差矩阵.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
 上面只考虑了a和b两个字段的情况，遇到m个n维数据记录的情况，将其排列为n×m矩阵X，同样可得协方差矩阵C，协方差矩阵是对称矩阵。
 
 想达到我们预期的优化目标，就相当于将协方差矩阵对角化，即除对角线以外的元素化0，且对角线上将元素按大小从上到下排列。<br/>
@@ -1617,7 +1750,7 @@ PCA算法的流程：
 6. 计算降维到k维的数据
 
 PCA算法流程图：<br/>
-[](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/PCA流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/PCA流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 PCA算法札记：
 - PCA的一个主成分尽可能大的反映数据中的发散性。
@@ -1972,6 +2105,7 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 55. 特征维度过小可能导致欠拟合，此时可能需要升维。升维方法举例：![](http://latex.codecogs.com/gif.latex?[x_1,x_2]\rightarrow[x_1,x_2,x_1^2,x_2^2])
 56. 超参数是用来控制学习算法如何学习的参数，它不通过训练数据来估计，一般需要人为指定。
 57. 统计是一种对历史情况的归纳，而这种归纳的目的是为了找出规律，给预测未来提供支持。
+58. scikit-learn设置n_jobs=-1可以尽可能使用计算机的所有内核。
 
 # Python第三方库的下载
 Python第三方库的下载遇到超时失败时，可以加上两个参数：<code>--no-cache-dir</code>和<code>--default-timeout=1000</code>。<br/>
@@ -1980,7 +2114,7 @@ Python第三方库的下载遇到超时失败时，可以加上两个参数：<c
 pip --no-cache-dir --default-timeout=1000 install xxx
 ```
 
-# 机器学习方向荐读书目(仅介绍本人接触过的)
+# 机器学习方向荐读书目
 
 ## 数学向
 - 《矩阵论》
