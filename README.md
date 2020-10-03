@@ -679,6 +679,17 @@ ANN包括两种主要的类型：
 
 我们可能会认为简单的增加中间层的层数就使神经网路变得更加复杂，更加有效。而事实上，单纯地增加神经网络的中间层的层数，是会导致BP算法无法进行学习的情况。
 
+前馈神经网络算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/BP神经网络流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+#### CNN
+CNN算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/CNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+#### RNN
+RNN算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/RNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
 ### KNN
 KNN是一种搜索最邻近的算法。当输入一个未知的数据时，该算法根据邻近的K个已知数据所属类别，以多数表决的方式确定输入数据的类别。它不仅仅可以用作一个分类器，还可以用于搜索类似项。
 
@@ -913,6 +924,9 @@ KNN可应用于模式识别、文本分类、多分类等领域
     1. 某份数据的不确定较小，亦即其中某一类别的样本已经占了大多数，此时就不再对这份数据继续进行划分，将对应的Node转化为叶结点。
     2. 某份数据的不确定性仍然较大，那么这份数据就要继续分割下去。
 
+决策树算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/决策树流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
 决策树常见的生成算法：
 - ID3算法(交互式二分法)：比较朴素，使用互信息作为信息增益的度量，划分离散型数据，可以二分也可以多分。
 - C4.5算法：使用信息增益比(信息增益比以固有值作为除数，可消除多值在选择特征维度时所产生的影响)作为信息增益的度量，给出了混合型数据分类的解决方案。
@@ -932,6 +946,8 @@ ID3算法的思路是：
 C4.5算法是ID3算法的优化版，它能够和连续解释变量一起使用，同时能为特征提供缺失值，还能给树剪枝(剪枝通过使用叶子结点替代几乎不能对实例进行分类的分支来减小树的体积)。
 
 事实上，决策树模型的损失就是数据的不确定性，而模型的算法就是要最小化该不确定性。
+
+对于波动不大、方差较小的数据集，可以选取一种比较稳定的分裂准则作为划分方法。
 
 防止决策树过拟合的两种策略：
 1. 预剪枝：及早停止树的生长，限制条件可能包括限制树的最大深度、限制叶子节点的最大数目、规定一个结点中数据点的最小数目。
@@ -966,6 +982,9 @@ scikit-learn的预剪枝策略参数取值：max_depth、max_leaf_nodes、min_sa
 得到随机的决策树以构成决策森林的关键：
 - 依靠Bootstrap集成法(bagging方法)，即对数据进行Bootstrap自主采样。<br/>这种方法不是利用训练集合中的所有的输入数据来训练每棵决策树，而是利用bootstrap_sample(inputs)的取样结果来训练每棵决策树。因为每一棵决策树都是用不同的数据建立的，因此与其他决策树相比，每一棵都有其独特之处。<br/>该方法的另一个好处是可以统一使用非抽样数据来测试每一棵决策树，这意味着如果你的模型效果评测方式设计得巧妙，完全可以将所有数据都用于训练集。
 - 在分类时不断变换选择最佳属性(best_attribute)进行划分。这里不是说选择全部的剩余属性进行划分，而是先从中随机选取一个子集，然后从中寻找最佳属性进行划分。
+
+随机森林算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/随机森林流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 数学上可以证明，随机森林既能减少过拟合，又能保持树的预测能力，所以随机森林是不错的算法。
 
@@ -1006,6 +1025,8 @@ max_features决定了每棵树的随机性大小。它如果接近n_features，�
 实际上，树越多，它对随机状态选择的鲁棒性就越好。
 
 随机森林不适合高维稀疏数据(如文本数据)，会消耗更多的内存，训练和预测的速度也会更慢，此时改用线性模型反而可能更为适合。
+
+随机森林的训练过程中存在着样本扰动和属性扰动。
 
 #### 梯度提升决策树(GBDT)
 GBDT属于GBM的一种，它通过合并多棵决策树来构建一个更为强大的模型，可用于回归问题和分类问题。
@@ -1198,8 +1219,8 @@ scikit-learn没有实现堆叠元估计器，但可以继承BaseEstimator类去�
 
 贝叶斯分类器的代表有：
 - 朴素贝叶斯分类器
+- 半朴素贝叶斯分类器(如树扩展的朴素贝叶斯分类模型TAN分类器)
 - 贝叶斯网络分类器
-- 树扩展的朴素贝叶斯分类模型TAN分类器
 
 #### 朴素贝叶斯分类器
 朴素贝叶斯分类常被称为生成式分类器，它是基于概率特征来实现分类的；而逻辑回归常被称为判别式分类器，其中的概率只是一种分类的判别方式。<br/>
@@ -1221,7 +1242,7 @@ scikit-learn没有实现堆叠元估计器，但可以继承BaseEstimator类去�
 - 朴素贝叶斯可以处理离散型、连续型、混合型的数据。其中，离散型的朴素贝叶斯不仅能对离散数据进行分类，还能进行特征提取和可视化。
 - 朴素贝叶斯模型对高维稀疏数据的效果很好，对参数的鲁棒性也相对较好。它是很好的基准模型，常用于非常大的数据集（在这些数据集上即使训练线性模型也需要花费大量时间）。
 - 朴素贝叶斯的损失函数是0-1函数下的贝叶斯决策。
-- 朴素贝叶斯算法常用语垃圾邮件的分类以及某些文本分类问题中。
+- 朴素贝叶斯有时候会牺牲一定的分类准确率。
 
 朴素贝叶斯算法的优点：
 - 运用了统计学的成熟理论，可解释性强。
@@ -1239,13 +1260,16 @@ scikit-learn没有实现堆叠元估计器，但可以继承BaseEstimator类去�
 朴素贝叶斯适用的应用场景：
 - 实时预测
 - 多分类预测
-- 文本分类/垃圾邮件过滤/情感分析
+- 文本分类/垃圾邮件过滤/欺诈检测/拼写检查/情感分析
 - 协同过滤推荐系统
 
 朴素贝叶斯算法的基本流程(在估计参数时选择ML估计，决策时选择MAP估计)：
 1. 统计样本数据，得到先验概率P(y)和似然度P(x|y)。
 2. 根据待预测样本所包含的特征，对不同类分别进行后验概率计算。
 3. 比较y1,y2,...,yn的后验概率，输出的预测就是概率值最大的类。
+
+朴素贝叶斯算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/朴素贝叶斯流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 朴素贝叶斯算法背后的数学思想：
 - 使用极大似然估计导出模型的具体参数(先验概率、条件概率)
@@ -1273,6 +1297,9 @@ alpha越大，平滑化越强，模型复杂度越低。算法性能对alpha的�
 - 小型数据集上，朴素贝叶分类器性能通常优于逻辑回归分类器。
 - 比之逻辑回归分类器，朴素贝叶斯分类器更容易产生偏差，这可以防止其拟合噪声。
 - 上述偏差也会阻碍朴素贝叶斯模型在大数据集上进行学习。
+
+使用朴素贝叶斯进行文本分类时，待分类语料中，有部分语句中的某些词汇在训练语料的A类中从未出现过，处理方式是：<br/>
+考虑到此特征可能会起作用，不应该简单地删除它，而应该使用一些参数平滑方式，使它起作用。
 
 ##### 离散型朴素贝叶斯
 先验概率公式：<br/>
@@ -1316,6 +1343,8 @@ I()是一个指示函数，它将布尔值转变成0/1。<br/>
 - ODE(One-Dependent-Estimator)算法：该算法中各个维度的特征至多依赖于一个其他维度(paj)的特征：<br/>![](http://latex.codecogs.com/gif.latex?p(c_{k}|X=x)=p(y=c_{k})\prod_{i=1}^{n}p(X^{(j)}=x^{(j)}|Y=c_{k},X^{(pa_{j})}=x^{(pa_{j})}))
 - SPODE(Super-Parent-ODE)算法：ODE算法的一个特例，所有维度的特征都依赖于同一个维度的特征，这个被共同依赖的特征叫Super-Parent(使用交叉验证来选择)：<br/>![](http://latex.codecogs.com/gif.latex?p(c_{k}|X=x)=p(y=c_{k})\prod_{i=1}^{n}p(X^{(j)}=x^{(j)}|Y=c_{k},X^{(pa)}=x^{(pa)}))
 - AODE(Averaged-ODE)算法：利用SPODE算法并尝试把许多个训练后的、有足够训练数据量支撑的SPODE模型集成在一起来构建最终的模型。<br/>一般来说，AODE会以所有维度的特征作为Super-Parent训练n个SPODE模型，然后线性组合出最后的模型。
+
+TAN算法通过发现属性之间的依赖关系来降低朴素贝叶斯算法中任意属性之间的条件独立性假设。
 
 #### 贝叶斯网络
 贝叶斯网络又称为贝叶斯信念网络，它还引入了图论的思想。
@@ -1397,6 +1426,9 @@ VMM和HMM都是有限自动机的扩充，是一种加权的有限状态机。
 隐藏马尔科夫链随机生成的状态序列称为状态序列；每个状态生成一个观测的随机序列，称为观测序列。序列的每个位置可以看做一个时刻，它可以被形式化地描述为一个五元组![](http://latex.codecogs.com/gif.latex?<Q,A,O,B,\pi>)。
 
 HMM本质是求解联合概率。
+
+隐马尔可夫算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/HMM流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
 #### 最大熵马尔可夫模型(HEMM)
 MEMM可作为HMM的替代方法。这个模型中，转换和观测概率矩阵由每个状态的最大熵分类器替代。它允许对概率分布进行编码从而可以在已知观测数据的情况下产生状态到状态的转换。此模型在NLP领域已应用到信息抽取和语义角色标注。
@@ -1724,8 +1756,12 @@ leaf2 = ([30, -15],)
 这个数字越小，表示合并的次序越靠后。这意味着，当我们想分拆聚类的时候，可以根据合并次序的值，从最小到最大依次进行。<br/>
 最早的单元素聚类slot标定为∞(实际计算机中通常会用很大或很特殊的数值表示∞)。
 
-### 不可能性定理
-不可能性定理告诉我们，在聚类时不可能同时满足以下三个条件中的两个以上：
+### 高斯混合模型(GMM)
+GMM算法流程图：<br/>
+![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/GMM流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+
+### 聚类的不可能性定理
+聚类的不可能性定理告诉我们，在聚类时不可能同时满足以下三个条件中的两个以上：
 - 丰富性：存在一个能产生所有不同类型分区的距离函数(聚类算法可以创建数据点到群集的分配的所有类型的映射)。
 - 尺度不变性：如果所有的数据都放大一个倍数，它们仍能在同一个群集中。
 - 一致性：缩小群集内点与点之间的距离，然后再扩展这个距离，群集应该产生同样的结果。
@@ -2206,6 +2242,7 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 56. 超参数是用来控制学习算法如何学习的参数，它不通过训练数据来估计，一般需要人为指定。
 57. 统计是一种对历史情况的归纳，而这种归纳的目的是为了找出规律，给预测未来提供支持。
 58. scikit-learn设置n_jobs=-1可以尽可能使用计算机的所有内核。
+59. 基于概率的学习模型不需要归一化的原因是：它们不需要关心变量的值，而是关心变量的分布和变量间的条件概率。
 
 # Python第三方库的下载
 Python第三方库的下载遇到超时失败时，可以加上两个参数：<code>--no-cache-dir</code>和<code>--default-timeout=1000</code>。<br/>
