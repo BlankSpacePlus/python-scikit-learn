@@ -744,6 +744,8 @@ CNN比之NN特殊之处卷积的实现方案：
 CNN算法流程图：<br/>
 ![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/CNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
 
+[CNN网络架构演进：从LeNet到DenseNet](https://www.cnblogs.com/skyfsm/p/8451834.html)
+
 #### 循环神经网络(RNN)
 RNN算法流程图：<br/>
 ![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/RNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
