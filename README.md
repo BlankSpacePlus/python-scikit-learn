@@ -3,10 +3,10 @@
 版本：`0.22.1`
 
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/sklearn.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/sklearn.png)
 
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/sklearn-python.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/sklearn-python.png)
 
 
 > 说好的只研究Scikit-Learn，终究还是把这里变成了深入学习机器学习的笔记资料库。
@@ -29,10 +29,10 @@
 想想我们想要训练小鼠，使其学会XX，一般会怎么做？<br/>
 一般是给奖惩机制，做对给奖励(强化=>形成依赖)，做错给惩罚(电击之类的=>形成恐惧经验)<br/>
 其实，强化学习就和这种操作差不多，只不过“折磨”的是计算机……<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/小鼠.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/小鼠.png)
 
 
-![监督学习、无监督学习、强化学习](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/机器学习分类.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![监督学习、无监督学习、强化学习](images/机器学习分类.png)
 
 
 半监督学习允许使用少量的已标注数据为大量的数据生成标签，它在处理大量数据时可能比较实用。<br/>
@@ -213,7 +213,7 @@ wi代表模型参数，b是误差项常数，φ代表激活函数。
 感知机的参数的权重向量常用随机梯度下降法(SGD)来确定，和正类相关的权重值为正数，和负类相关的权重值为负数。
 
 感知机的激活函数应该选择类似于阶跃函数的、能将输出值进行非线性变换的函数(神经网络的激活函数是连续可导的)，比如经典的海维赛德阶跃函数(单元阶跃函数)：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/阶跃函数.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/阶跃函数.gif)<br/>
 使用Sigmoid函数也可以，后面会提到。
 
 感知机的损失函数一说是Hinge函数max(0, -twx)，一说是被误分类的样本点到当前分离超平面的相对距离的总和：<br/>
@@ -289,7 +289,7 @@ wi代表模型参数，b是误差项常数，φ代表激活函数。
 它的表达式是：<br/>
 ![](http://latex.codecogs.com/gif.latex?Sigmoid(x)=\frac{1}{1+e^{-x}})
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/sigmoid.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/sigmoid.png)
 
 根据Logistic函数的表达式可知：对于Logistic函数，自变量越接近于-∞，函数值越接近于0，而自变量越接近于+∞，函数值越接近于1。
 
@@ -330,7 +330,7 @@ Logistic函数不是直接得到离散的0/1值，它给出的是一种概率。
 3. 通过得到的损失值，利用梯度下降等优化方法调整参数w，不断重复这个过程直到损失最小。
 
 逻辑回归算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/逻辑回归流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/逻辑回归流程图.png)
 
 逻辑回归处理过拟合可以采用与线性回归类似的方法，添加的正则项也很类似。
 
@@ -446,7 +446,7 @@ SVM应用领域：文本分类、文本情感分析、图像分类、数据挖�
 ![](http://latex.codecogs.com/gif.latex?G=(x_{i}\cdot{x_{j}})_{N\times{N}})
 
 线性可分SVM算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/线性可分SVM流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/线性可分SVM流程图.png)
 
 #### 非线性SVM
 非线性SVM需要使用核技巧(注意核技巧重原理，核方法重应用)。
@@ -499,7 +499,7 @@ SVM分类(非线性)的算法流程：
 3. 使用间隔作为度量分类效果的损失函数，最终找到能够让间隔最大化的超平面，完成分类任务。
 
 非线性SVM算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/非线性SVM流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/非线性SVM流程图.png)
 
 #### 最小二乘SVM
 SVM标准算法在应用中存在着超平面参数选择，以及问题求解中矩阵规模受训练样本数目影响很大，导致规模过大的问题。
@@ -542,7 +542,7 @@ SVM处理多分类问题有两种主要的思路：
 例如，输入层20个神经元，隐藏层10个神经元，输出层5个神经元，则可称之为20-10-5网络。
 
 异或神经网络Demo：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/异或神经网络.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/异或神经网络.png)<br/>
 
 输入层：神经网络的入口点，是模型设置的输入数据的地方，这一层无神经元，因为它的主要目的是作为隐藏层的导入渠道。
 
@@ -580,7 +580,7 @@ SVM处理多分类问题有两种主要的思路：
 
 [神经网络激活函数可视化](#神经网络激活函数可视化)
 
-- Sigmoid是与神经元一起使用的默认函数，因为其有能力做平滑决策：<br/>![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/阶跃函数和Sigmoid函数.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>但Sigmoid函数也并非完美无缺，它在0点附近(特别是(-1,1)之间几乎成为直线)图像趋于平缓，在使用梯度下降等最优化方法的时候很容易导致梯度弥散甚至梯度消失。
+- Sigmoid是与神经元一起使用的默认函数，因为其有能力做平滑决策：<br/>![](images/阶跃函数和Sigmoid函数.png)<br/>但Sigmoid函数也并非完美无缺，它在0点附近(特别是(-1,1)之间几乎成为直线)图像趋于平缓，在使用梯度下降等最优化方法的时候很容易导致梯度弥散甚至梯度消失。
 - Tanh函数可以取代Sigmoid函数。<br/>它同样属于“可导的阶跃函数”，但梯度更大，使用梯度下降等优化算法时收敛更快，学习时间更短。<br/>Tanh函数仍存在不足，因其仍然是越接近0点变化率就越小(尽管比Sigmoid函数好点)。
 - ReLU函数则比Sigmoid、Tanh等函数更有优势。
 
@@ -654,7 +654,7 @@ SVM处理多分类问题有两种主要的思路：
 前馈神经网络通过有向非循环图定义。
 
 多层感知机模型是一种典型的前馈神经网络：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/神经网络-MP模型.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/神经网络-MP模型.png)<br/>
 ![](http://latex.codecogs.com/gif.latex?y=\Phi(\sum\limits_{i=1}^n{w_{i}x_{i}+b}))<br/>
 参数值说明：
 - w能把从激活函数得到的函数值线性映射到另一个维度的空间上
@@ -680,7 +680,7 @@ BP神经网络通常使用单隐藏层，事实上它也只适用于训练浅层
 - 学习速率不是简单地取为常量。
 
 动态学习速率调整公式：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/神经网络动态学习速率.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/神经网络动态学习速率.png)
 
 神经网络训练时，迭代运算计算权重会比较快，这样做不试图计算关于权重的误差函数的导数，而是计算每个神经元权重的权重变化，此为delta规则：<br/>
 ![](http://latex.codecogs.com/gif.latex?\Delta{w_{ji}}=\alpha{(t_{j}-\phi(h_{j}))\phi'(h_{j})}x_{i})<br/>
@@ -698,7 +698,7 @@ BP神经网络算法流程：
 - ![](http://latex.codecogs.com/gif.latex?m=\sqrt{nl})
 
 BP神经网络算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/BP神经网络流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/BP神经网络流程图.png)
 
 神经网络向前传导和反向传播的区别：向前传导是由后往前将`激活值`一路传导(由输入数据产生输出的过程)，反向传播则是由前往后将`梯度`一路传播(进行调整和优化)。<br/>
 值得一提的是：“前”与“后”是由Layer与输出层的相对位置给出的，越靠近输出层的Layer越前，反之越靠后。
@@ -742,13 +742,13 @@ CNN比之NN特殊之处卷积的实现方案：
 - 平均池化，它会输出接收到所有输入中的平均值。
 
 CNN算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/CNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/CNN流程图.png)
 
 [CNN网络架构演进：从LeNet到DenseNet](https://www.cnblogs.com/skyfsm/p/8451834.html)
 
 #### 循环神经网络(RNN)
 RNN算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/RNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/RNN流程图.png)
 
 ### K近邻(KNN)
 KNN是一种搜索最邻近的算法。当输入一个未知的数据时，该算法根据邻近的K个已知数据所属类别，以多数表决的方式确定输入数据的类别。它不仅仅可以用作一个分类器，还可以用于搜索类似项。
@@ -847,7 +847,7 @@ KNN的算法流程：
 6. 测试元组测试完毕后计算检验指标，继续设定不同K值重新进行训练，选择最优K值。
 
 KNN算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/KNN流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/KNN流程图.png)
 
 K-d树是一种二叉树，也是一种多维空间划分树。它通过把整个多维空间划分为特定的几个部分，然后在特定空间的部分内进行相关搜索操作，进而减少搜索次数并达到快速搜索的目的。<br/>
 K-d树可以通过特殊的结构存储训练数据，以减少KNN计算距离的次数。
@@ -855,10 +855,10 @@ K-d树可以通过特殊的结构存储训练数据，以减少KNN计算距离�
 K-d树的构建是一个递归的过程：先确定一个初步的切分点来划分左子空间与右子空间，然后对两个子空间的样本点重复寻找切分点，将空间和数据集进一步细分，如此反复，直至空间中只包含一个数据点。
 
 举个例子：T={(2,2), (5,4), (9,7), (4,8), (8,3)} =><br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD1.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD3.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K-d树/KD二叉树.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/K-d树/KD1.png)<br/>
+![](images/K-d树/KD2.png)<br/>
+![](images/K-d树/KD3.png)<br/>
+![](images/K-d树/KD二叉树.png)
 
 使用K-d树优化KNN搜索可以先找“当前最近邻点”，然后向上回溯查验最近邻的K个点，更新这K个点。
 
@@ -985,7 +985,7 @@ KNN可应用于模式识别、文本分类、多分类等领域
     2. 某份数据的不确定性仍然较大，那么这份数据就要继续分割下去。
 
 决策树算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/决策树流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/决策树流程图.png)
 
 决策树常见的生成算法：
 - ID3算法(交互式二分法)：比较朴素，使用互信息作为信息增益的度量，划分离散型数据，可以二分也可以多分。
@@ -1081,7 +1081,7 @@ scikit-learn的预剪枝策略参数取值：max_depth、max_leaf_nodes、min_sa
 - 在分类时不断变换选择最佳属性(best_attribute)进行划分。这里不是说选择全部的剩余属性进行划分，而是先从中随机选取一个子集，然后从中寻找最佳属性进行划分。
 
 随机森林算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/随机森林流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/随机森林流程图.png)
 
 数学上可以证明，随机森林既能减少过拟合，又能保持树的预测能力，所以随机森林是不错的算法。
 
@@ -1177,7 +1177,7 @@ GBDT和随机森林在类似数据上表现都很好，所以可以先尝试随�
 ### 集成学习
 集成学习是合并多个机器学习模型来构建更强大的机器学习模型的方法，它针对多个学习结果进行组合。这样的模型有很多，已证明有两种集成模型对大量分类和回归的数据集都有效，那就是随机森林和梯度提升决策树，它们都以决策树为基础，而预测性能可能比单纯的决策树好一些。
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/集成学习.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/集成学习.png)<br/>
 
 单一的回归算法、分类算法、聚类算法各有各的优点和缺点(NFL定理)，单独使用的效果可能未必够好。此时为了提高预测的精度，我们可以采用集成学习的方法。
 
@@ -1195,8 +1195,8 @@ PAC提出一个重要假设：它要求数据是从某个稳定的概率分布�
 集成学习的难点在于究竟集成哪些模型以及如何将学习结果整合起来。
 
 学习器的组合可以采用串联和并联两种方式(和电路类似)，并联学习器彼此独立，串联学习器将预测结果向后传递：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/学习器并行.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/学习器串行.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/学习器并行.png)<br/>
+![](images/学习器串行.png)
 
 学习器的集成思路：
 - 将不同的弱分类器进行集成
@@ -1282,7 +1282,7 @@ AdaBoost(AdaptiveBoosting)是一种流行的Boosting，它迭代地在训练数�
 当算法达到预期性能或经过一定次数的迭代后，就会停止，给出基础估计预测的权重和。
 
 AdaBoost算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/AdaBoost流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/AdaBoost流程图.png)
 
 AdaBoost算法改进：
 - 权值更新方法的改进：
@@ -1399,7 +1399,7 @@ scikit-learn没有实现堆叠元估计器，但可以继承BaseEstimator类去�
 3. 比较y1,y2,...,yn的后验概率，输出的预测就是概率值最大的类。
 
 朴素贝叶斯算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/朴素贝叶斯流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/朴素贝叶斯流程图.png)
 
 朴素贝叶斯算法背后的数学思想：
 - 使用极大似然估计导出模型的具体参数(先验概率、条件概率)
@@ -1558,7 +1558,7 @@ VMM和HMM都是有限自动机的扩充，是一种加权的有限状态机。
 HMM是关于时序的概率模型，其本质是求解联合概率。
 
 隐马尔可夫算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/HMM流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/HMM流程图.png)
 
 HMM可处理的三类主要问题：
 - 概率计算问题。给定模型λ和观测序列O，计算在模型λ下观测序列O出现的概率P=(O|λ)。
@@ -1657,7 +1657,7 @@ L0范数：向量中非0元素的个数。
 换而言之，在此情况下(包括这些假设)，最小化误差的平方和等价于最大化产生观测数据的可能性。
 
 线性回归算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/线性回归流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/线性回归流程图.png)
 
 ### 多元线性回归
 ![](http://latex.codecogs.com/gif.latex?y={\alpha}+{\beta_{1}}x_{1}+\cdots{+{\beta_{n}}x_{n}}=\alpha+\beta^{T}x)
@@ -1846,7 +1846,7 @@ K-Means的缺陷：
 - 不适合发现非凸面形状的聚类。
 
 K值的选取有很多方法，比较易于理解的一种是以误差(即每个数据点到所在聚类的中心的距离)的平方之和作为k的函数，画出该函数的图像，并在其“弯曲”的地方寻找合适的取值。<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/K均值聚类中K值的选择.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/K均值聚类中K值的选择.png)<br/>
 
 K-Means算法的基本思路：
 1. 随机设定K个质心，以这K个质心为核心，计算数据集到质心的距离，使所有的点采用按照最近(根据距离计算)原则聚成K个Cluster。
@@ -1854,7 +1854,7 @@ K-Means算法的基本思路：
 3. 根据均值计算得到的K个新质心，以这K个新质心为核心，使所有的点采用按照最近原则聚成K个Cluster。不断重复直至质心不再变化，即确定真正的质心。
 
 K-Means算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/KMeans流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/KMeans流程图.png)
 
 假设第j个Cluster内有n个数据点，根据欧氏距离公式，得到此Cluster的各个样本点到质心μj的距离的总和为：<br/>
 ![](http://latex.codecogs.com/gif.latex?\sum\limits_{i=0}^{n}(\Vert{x_{i}-\mu_{j}}\Vert^{2}))<br/>
@@ -1998,7 +1998,7 @@ GMM的主要思想是使用高斯分布作为参数模型，并使用EM算法进
 其实，根据中心极限定理，混合模型是可以假设为高斯模型的。
 
 GMM算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/GMM流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/GMM流程图.png)
 
 GMM的主要应用：
 - 数据集分类
@@ -2089,7 +2089,7 @@ PCA将一系列可能相关联的高维变量减少为一系列被称为主成�
 PCA算法试图使用较少数量的特征对样本进行描述以达到降低空间维数。
 
 一般地，如果我们有M个n维向量，想要将其变换到由M个R维向量表示的新空间中，可以先将R个基向量按行组成矩阵A，再将M个n维向量按列组成矩阵B，向量乘积AB就是变换的结果：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA矩阵表达式.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/PCA矩阵表达式.gif)<br/>
 两个矩阵相乘的意义是：将右边矩阵的每一列行向量变换到左边矩阵每一行行向量为基所表示的空间去，从而实现降维。<br/>
 所以，只要找到合适的p1,p2,...,pR，就能实现对特征矩阵的投影，从而实现降维。
 
@@ -2105,9 +2105,9 @@ PCA算法试图使用较少数量的特征对样本进行描述以达到降低�
 至此，得到将一组n维向量使用PCA算法降为k维(0<k<n)的优化目标：选择k个单位正交基，使得数据变换到这组正交基上后，各字段两两之间协方差为0，而字符的方差尽可能大(在正交的约束下，取最大的k个方差)。
 
 将a和b按列组成矩阵X：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA组合ab.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/PCA组合ab.gif)<br/>
 写出协方差矩阵：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/PCA协方差矩阵.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)<br/>
+![](images/PCA协方差矩阵.gif)<br/>
 上面只考虑了a和b两个字段的情况，遇到m个n维数据记录的情况，将其排列为n×m矩阵X，同样可得协方差矩阵C，协方差矩阵是对称矩阵。
 
 想达到我们预期的优化目标，就相当于将协方差矩阵对角化，即除对角线以外的元素化0，且对角线上将元素按大小从上到下排列。<br/>
@@ -2155,7 +2155,7 @@ PCA算法的流程：
 6. 计算降维到k维的数据
 
 PCA算法流程图：<br/>
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/算法流程图/PCA流程图.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/算法流程图/PCA流程图.png)
 
 PCA算法札记：
 - PCA的一个主成分尽可能大的反映数据中的发散性。
@@ -2320,12 +2320,12 @@ BGD中，若存在多个局部最优解的情况下，有时候得到的最优�
 # 概率分布可视化
 摘自 => [Here](https://github.com/graykode/distribution-is-all-you-need)
 
-![重要的概率分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/overview.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![重要的概率分布](images/概率分布/overview.png)
 
 ## 均匀分布
 均匀分布在 [a，b] 上具有相同的概率值，是简单概率分布。
 
-![均匀分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/uniform.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![均匀分布](images/概率分布/uniform.png)
 
 
 ## 伯努利分布
@@ -2333,26 +2333,26 @@ BGD中，若存在多个局部最优解的情况下，有时候得到的最优�
 
 利用二元交叉熵对二项分类进行分类。它的形式与伯努利分布的负对数相同。
 
-![伯努利分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/bernoulli.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![伯努利分布](images/概率分布/bernoulli.png)
 
 
 ## 二项分布
 参数为 n 和 p 的二项分布是一系列 n 个独立实验中成功次数的离散概率分布。<br/>
 二项式分布是指通过指定要提前挑选的数量而考虑先验概率的分布。
 
-![二项分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/binomial.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![二项分布](images/概率分布/binomial.png)
 
 
 ## 多伯努利分布(分类分布)
 多伯努利称为分类分布。交叉熵和采取负对数的多伯努利分布具有相同的形式。
 
-![多伯努利分布(分类分布)](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/categorical.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![多伯努利分布(分类分布)](images/概率分布/categorical.png)
 
 
 ## 多项式分布
 多项式分布与分类分布的关系与伯努尔分布与二项分布的关系相同。
 
-![多项式分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/multinomial.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![多项式分布](images/概率分布/multinomial.png)
 
 
 ## β分布
@@ -2362,7 +2362,7 @@ BGD中，若存在多个局部最优解的情况下，有时候得到的最优�
 
 当β分布满足特殊情况（α=1，β=1）时，均匀分布是相同的。
 
-![β分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/beta.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![β分布](images/概率分布/beta.png)
 
 
 ## Dirichlet分布
@@ -2370,7 +2370,7 @@ dirichlet 分布与多项式分布是共轭的。
 
 如果 k=2，则为β分布。
 
-![Dirichlet分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/dirichlet.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![Dirichlet分布](images/概率分布/dirichlet.png)
 
 
 ## γ分布
@@ -2378,38 +2378,38 @@ dirichlet 分布与多项式分布是共轭的。
 
 指数分布和卡方分布是伽马分布的特例。
 
-![γ分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/gamma.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![γ分布](images/概率分布/gamma.png)
 
 
 ## 指数分布
 指数分布是 α=1 时 γ 分布的特例。
 
-![指数分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/exponential.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![指数分布](images/概率分布/exponential.png)
 
 
 ## 高斯分布
 高斯分布是一种非常常见的连续概率分布。
 
-![高斯分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/gaussian.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![高斯分布](images/概率分布/gaussian.png)
 
 
 ## 正态分布(标准高斯分布)
 正态分布为标准高斯分布，数学期望为0，标准差为1。
 
-![正态分布(标准高斯分布)](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/normal.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![正态分布(标准高斯分布)](images/概率分布/normal.png)
 
 
 ## 卡方分布
 k 自由度的卡方分布是 k 个独立标准正态随机变量的平方和的分布。<br/>
 卡方分布是 β 分布的特例。
 
-![卡方分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/chi-squared.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![卡方分布](images/概率分布/chi-squared.png)
 
 
 ## t分布
 t分布是对称的钟形分布，与正态分布类似，但尾部较重，这意味着它更容易产生远低于平均值的值。
 
-![t分布](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/概率分布/student_t.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![t分布](images/概率分布/student_t.png)
 
 
 # 神经网络激活函数可视化
@@ -2419,37 +2419,37 @@ t分布是对称的钟形分布，与正态分布类似，但尾部较重，这�
 ## 逻辑函数Sigmoid
 ![](http://latex.codecogs.com/gif.latex?\Phi(x)=Sigmoid(x)=\frac{1}{1+e^{-x}})
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/sigmoid.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/sigmoid.png)
 
 
 ## 正切函数Tanh
 ![](http://latex.codecogs.com/gif.latex?\Phi(x)=tanh(x)=\frac{1-e^{-2x}}{1+e^{-2x}})
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/tanh.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/tanh.png)
 
 
 ## 线性整流函数ReLU
 ![](http://latex.codecogs.com/gif.latex?\Phi(x)=ReLU(x)=max(0,x))
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/relu.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/relu.png)
 
 
 ## ELU函数
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/elu.gif?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/elu.gif)
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/tanh.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/tanh.png)
 
 
 ## Softplus函数
 ![](http://latex.codecogs.com/gif.latex?\Phi(x)=ln(1+e^x))
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/softplus.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/softplus.png)
 
 
 ## 恒同映射Identity
 ![](http://latex.codecogs.com/gif.latex?\Phi(x)=x)
 
-![](https://github.com/ChenYikunReal/python-scikit-learn-training/blob/master/images/激活函数/identity.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NjMxOA==,size_16,color_FFFFFF,t_70)
+![](images/激活函数/identity.png)
 
 
 # 札记
