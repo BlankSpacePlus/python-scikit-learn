@@ -11,7 +11,7 @@
 
 > 说好的只研究Scikit-Learn，终究还是把这里变成了深入学习机器学习的笔记资料库。
 
-- [Python数据分析和机器学习入门练习](https://github.com/ChenYikunReal/python-machine-learning)
+- [Python数据分析和机器学习入门练习](../../../python-machine-learning)
 
 # 监督学习、无监督学习、半监督学习、强化学习
 | 类型 | 描述 |
